@@ -23,7 +23,7 @@ This project is designed for **real-time cryptocurrency price tracking** using *
 
 ### 1️⃣ Clone the repository
 ```sh
-git clone [https://github.com/your-username/crypto-price-tracker.git](https://github.com/Andrewsis/pet_project_data_engineering)
+git clone https://github.com/Andrewsis/pet_project_data_engineering
 cd pet_project_data_engineering
 ```
 
