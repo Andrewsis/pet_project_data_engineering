@@ -1,0 +1,29 @@
+[2025-01-31T19:36:05.516+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-31T19:36:05.533+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-01-31T19:36:05.550+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-01-31T19:36:05.552+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-01-31T19:36:05.566+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-30 00:00:00+00:00
+[2025-01-31T19:36:05.572+0000] {standard_task_runner.py:72} INFO - Started process 209 to run task
+[2025-01-31T19:36:05.575+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpz6_ssi39']
+[2025-01-31T19:36:05.578+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask kafka_producer
+[2025-01-31T19:36:05.618+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-30T00:00:00+00:00 [running]> on host d9ee2daf224d
+[2025-01-31T19:36:05.684+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-01-31T19:36:05.685+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-31T19:36:05.704+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-01-31T19:36:05.706+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-01-31T19:36:05.984+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-01-31T19:36:05.985+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-01-31T19:36:05.986+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-01-31T19:36:06.095+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-01-31T19:36:06.096+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-01-31T19:36:06.099+0000] {logging_mixin.py:190} INFO - Found 2025-01-30.json in MinIO
+[2025-01-31T19:36:06.113+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-01-31T19:36:06.115+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-01-31T19:36:06.116+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-01-31T19:36:06.503+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-01-31T19:36:06.506+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-01-31T19:36:06.514+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-31T19:36:06.515+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250131T193605, end_date=20250131T193606
+[2025-01-31T19:36:06.551+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-01-31T19:36:06.570+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-01-31T19:36:06.573+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

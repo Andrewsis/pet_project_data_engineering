@@ -1,0 +1,64 @@
+[2025-01-29T15:15:06.354+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-29T15:15:06.368+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.create_topic scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-01-29T15:15:06.377+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.create_topic scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-01-29T15:15:06.378+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-01-29T15:15:06.389+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): create_topic> on 2025-01-28 00:00:00+00:00
+[2025-01-29T15:15:06.393+0000] {standard_task_runner.py:72} INFO - Started process 502 to run task
+[2025-01-29T15:15:06.397+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'create_topic', 'scheduled__2025-01-28T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp7q_k0s3p']
+[2025-01-29T15:15:06.400+0000] {standard_task_runner.py:105} INFO - Job 9: Subtask create_topic
+[2025-01-29T15:15:06.442+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.create_topic scheduled__2025-01-28T00:00:00+00:00 [running]> on host 21ecc35bc506
+[2025-01-29T15:15:06.511+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='create_topic' AIRFLOW_CTX_EXECUTION_DATE='2025-01-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-28T00:00:00+00:00'
+[2025-01-29T15:15:06.512+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-29T15:15:06.525+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-01-29T15:15:06.526+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-01-29T15:15:06.527+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-01-29T15:15:06.638+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-01-29T15:15:06.639+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-01-29T15:15:06.640+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-01-29T15:15:06.742+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-01-29T15:15:06.743+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-01-29T15:15:06.747+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-01-29T15:15:06.748+0000] {conn.py:1205} INFO - Probing node 1001 broker version
+[2025-01-29T15:15:06.750+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-01-29T15:15:06.750+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-01-29T15:15:06.853+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-01-29T15:15:06.854+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-01-29T15:15:07.013+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-01-29T15:15:07.014+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-01-29T15:15:07.021+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-29T15:15:07.022+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=create_topic, run_id=scheduled__2025-01-28T00:00:00+00:00, execution_date=20250128T000000, start_date=20250129T151506, end_date=20250129T151507
+[2025-01-29T15:15:07.051+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-01-29T15:15:07.069+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-01-29T15:15:07.071+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-01-29T16:01:23.344+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-29T16:01:23.358+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.create_topic scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-01-29T16:01:23.366+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.create_topic scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-01-29T16:01:23.368+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-01-29T16:01:23.379+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): create_topic> on 2025-01-28 00:00:00+00:00
+[2025-01-29T16:01:23.384+0000] {standard_task_runner.py:72} INFO - Started process 370 to run task
+[2025-01-29T16:01:23.387+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'create_topic', 'scheduled__2025-01-28T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpb7qj4l66']
+[2025-01-29T16:01:23.389+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask create_topic
+[2025-01-29T16:01:23.428+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.create_topic scheduled__2025-01-28T00:00:00+00:00 [running]> on host 5814ec6b4fbb
+[2025-01-29T16:01:23.496+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='create_topic' AIRFLOW_CTX_EXECUTION_DATE='2025-01-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-28T00:00:00+00:00'
+[2025-01-29T16:01:23.498+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-29T16:01:23.509+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-01-29T16:01:23.511+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-01-29T16:01:23.512+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-01-29T16:01:23.616+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-01-29T16:01:23.617+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-01-29T16:01:23.618+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-01-29T16:01:23.721+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-01-29T16:01:23.722+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-01-29T16:01:23.727+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-01-29T16:01:23.728+0000] {conn.py:1205} INFO - Probing node 1001 broker version
+[2025-01-29T16:01:23.730+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-01-29T16:01:23.730+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-01-29T16:01:23.833+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-01-29T16:01:23.835+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-01-29T16:01:23.999+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-01-29T16:01:24.000+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-01-29T16:01:24.008+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-29T16:01:24.009+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=create_topic, run_id=scheduled__2025-01-28T00:00:00+00:00, execution_date=20250128T000000, start_date=20250129T160123, end_date=20250129T160124
+[2025-01-29T16:01:24.042+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-01-29T16:01:24.059+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-01-29T16:01:24.061+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
