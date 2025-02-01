@@ -37,8 +37,8 @@ docker-compose up airflow-init
 
 ## 📈 Monitoring & UI Access
   - **MinIO UI**: http://localhost:9001
-  - **MinIO server**: http://localhost:9000 
-  - **Postgres**: http://localhost:5433
+  - **MinIO server**: localhost:9000 
+  - **Postgres**:localhost:5433
   - **Airflow Webserver**: http://localhost:8080
-  - **Zookeeper**: http://localhost:2181
-  - **Kafka**: http://localhost:9092
+  - **Zookeeper**: localhost:2181
+  - **Kafka**: localhost:9092
