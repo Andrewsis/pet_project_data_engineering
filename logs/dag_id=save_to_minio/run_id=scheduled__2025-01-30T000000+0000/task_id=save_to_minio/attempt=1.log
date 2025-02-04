@@ -677,3 +677,193 @@ botocore.exceptions.NoCredentialsError: Unable to locate credentials
 [2025-01-31T19:36:02.657+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
 [2025-01-31T19:36:02.679+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
 [2025-01-31T19:36:02.681+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:22:40.460+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:22:40.478+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T13:22:40.486+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T13:22:40.487+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T13:22:40.500+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-30 00:00:00+00:00
+[2025-02-02T13:22:40.507+0000] {standard_task_runner.py:72} INFO - Started process 268 to run task
+[2025-02-02T13:22:40.512+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp521l8pik']
+[2025-02-02T13:22:40.515+0000] {standard_task_runner.py:105} INFO - Job 6: Subtask save_to_minio
+[2025-02-02T13:22:40.566+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [running]> on host e6ed12b0dfa5
+[2025-02-02T13:22:40.639+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-02-02T13:22:40.640+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:22:42.837+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T13:22:42.839+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T13:22:44.750+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T13:22:44.759+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:22:44.760+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250202T132240, end_date=20250202T132244
+[2025-02-02T13:22:44.824+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T13:22:44.846+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:22:44.849+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:37:50.733+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:37:50.745+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T13:37:50.750+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T13:37:50.751+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T13:37:50.760+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-30 00:00:00+00:00
+[2025-02-02T13:37:50.764+0000] {standard_task_runner.py:72} INFO - Started process 944 to run task
+[2025-02-02T13:37:50.766+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmput3fojma']
+[2025-02-02T13:37:50.768+0000] {standard_task_runner.py:105} INFO - Job 12: Subtask save_to_minio
+[2025-02-02T13:37:50.800+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [running]> on host 64f2a5764477
+[2025-02-02T13:37:50.855+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-02-02T13:37:50.857+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:37:53.829+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T13:37:53.830+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T13:37:54.245+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T13:37:54.253+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:37:54.254+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250202T133750, end_date=20250202T133754
+[2025-02-02T13:37:54.309+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T13:37:54.335+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:37:54.338+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T14:18:31.386+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T14:18:31.397+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T14:18:31.403+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T14:18:31.403+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T14:18:31.412+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-30 00:00:00+00:00
+[2025-02-02T14:18:31.416+0000] {standard_task_runner.py:72} INFO - Started process 2141 to run task
+[2025-02-02T14:18:31.418+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpphde_74e']
+[2025-02-02T14:18:31.420+0000] {standard_task_runner.py:105} INFO - Job 16: Subtask save_to_minio
+[2025-02-02T14:18:31.453+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [running]> on host 5ab92388ff22
+[2025-02-02T14:18:31.513+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-02-02T14:18:31.515+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T14:18:35.507+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T14:18:35.508+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T14:18:35.858+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T14:18:35.865+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T14:18:35.866+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250202T141831, end_date=20250202T141835
+[2025-02-02T14:18:35.921+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T14:18:35.938+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T14:18:35.940+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T15:55:16.748+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T15:55:16.762+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T15:55:16.769+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T15:55:16.770+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T15:55:16.781+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-30 00:00:00+00:00
+[2025-02-02T15:55:16.787+0000] {standard_task_runner.py:72} INFO - Started process 1064 to run task
+[2025-02-02T15:55:16.789+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpvhu6l0dp']
+[2025-02-02T15:55:16.792+0000] {standard_task_runner.py:105} INFO - Job 12: Subtask save_to_minio
+[2025-02-02T15:55:16.832+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [running]> on host 7bf4a44673c6
+[2025-02-02T15:55:16.898+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-02-02T15:55:16.900+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T15:55:20.491+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T15:55:20.493+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T15:55:20.844+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T15:55:20.852+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T15:55:20.853+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250202T155516, end_date=20250202T155520
+[2025-02-02T15:55:20.906+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T15:55:20.927+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T15:55:20.930+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T16:40:55.251+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T16:40:55.263+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T16:40:55.269+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T16:40:55.270+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T16:40:55.279+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-30 00:00:00+00:00
+[2025-02-02T16:40:55.283+0000] {standard_task_runner.py:72} INFO - Started process 2613 to run task
+[2025-02-02T16:40:55.286+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp8iqebhn0']
+[2025-02-02T16:40:55.288+0000] {standard_task_runner.py:105} INFO - Job 16: Subtask save_to_minio
+[2025-02-02T16:40:55.320+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [running]> on host 4061bda98b6f
+[2025-02-02T16:40:55.378+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-02-02T16:40:55.379+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T16:40:59.772+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T16:40:59.773+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T16:41:00.116+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T16:41:00.124+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T16:41:00.125+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250202T164055, end_date=20250202T164100
+[2025-02-02T16:41:00.155+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T16:41:00.172+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T16:41:00.174+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T18:50:40.219+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T18:50:40.231+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T18:50:40.238+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T18:50:40.240+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T18:50:40.248+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-30 00:00:00+00:00
+[2025-02-02T18:50:40.253+0000] {standard_task_runner.py:72} INFO - Started process 2687 to run task
+[2025-02-02T18:50:40.255+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpez41zd80']
+[2025-02-02T18:50:40.257+0000] {standard_task_runner.py:105} INFO - Job 17: Subtask save_to_minio
+[2025-02-02T18:50:40.290+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [running]> on host 15904aeddad7
+[2025-02-02T18:50:40.356+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-02-02T18:50:40.357+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T18:50:42.491+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T18:50:42.493+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T18:50:42.844+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T18:50:42.853+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T18:50:42.854+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250202T185040, end_date=20250202T185042
+[2025-02-02T18:50:42.916+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T18:50:42.936+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T18:50:42.938+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T19:21:45.626+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T19:21:45.637+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T19:21:45.643+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T19:21:45.644+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T19:21:45.653+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-30 00:00:00+00:00
+[2025-02-02T19:21:45.657+0000] {standard_task_runner.py:72} INFO - Started process 1222 to run task
+[2025-02-02T19:21:45.659+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp58c1kipr']
+[2025-02-02T19:21:45.662+0000] {standard_task_runner.py:105} INFO - Job 12: Subtask save_to_minio
+[2025-02-02T19:21:45.694+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [running]> on host dfbcbb9a3a68
+[2025-02-02T19:21:45.751+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-02-02T19:21:45.752+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T19:21:48.425+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T19:21:48.426+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T19:21:48.772+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T19:21:48.780+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T19:21:48.781+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250202T192145, end_date=20250202T192148
+[2025-02-02T19:21:48.802+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T19:21:48.821+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T19:21:48.823+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T20:19:42.845+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:19:42.857+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T20:19:42.863+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T20:19:42.864+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:19:42.873+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-30 00:00:00+00:00
+[2025-02-02T20:19:42.877+0000] {standard_task_runner.py:72} INFO - Started process 1225 to run task
+[2025-02-02T20:19:42.879+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmptgs_nd18']
+[2025-02-02T20:19:42.881+0000] {standard_task_runner.py:105} INFO - Job 12: Subtask save_to_minio
+[2025-02-02T20:19:42.916+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [running]> on host b0b992709001
+[2025-02-02T20:19:42.974+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-02-02T20:19:42.976+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:19:45.699+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T20:19:45.700+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T20:19:46.071+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T20:19:46.079+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:19:46.080+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250202T201942, end_date=20250202T201946
+[2025-02-02T20:19:46.110+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T20:19:46.128+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:19:46.130+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T20:40:58.223+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:40:58.238+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T20:40:58.246+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T20:40:58.247+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:40:58.258+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-30 00:00:00+00:00
+[2025-02-02T20:40:58.263+0000] {standard_task_runner.py:72} INFO - Started process 451 to run task
+[2025-02-02T20:40:58.265+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpls8e_bcr']
+[2025-02-02T20:40:58.269+0000] {standard_task_runner.py:105} INFO - Job 10: Subtask save_to_minio
+[2025-02-02T20:40:58.312+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [running]> on host 7ed9c07bce51
+[2025-02-02T20:40:58.380+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-02-02T20:40:58.381+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:41:01.660+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T20:41:01.661+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T20:41:02.000+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T20:41:02.007+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:41:02.008+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250202T204058, end_date=20250202T204102
+[2025-02-02T20:41:02.050+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T20:41:02.064+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:41:02.066+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T20:45:32.029+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:45:32.043+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T20:45:32.050+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [queued]>
+[2025-02-02T20:45:32.051+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:45:32.061+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-30 00:00:00+00:00
+[2025-02-02T20:45:32.065+0000] {standard_task_runner.py:72} INFO - Started process 892 to run task
+[2025-02-02T20:45:32.067+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-30T00:00:00+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpzj_a24a7']
+[2025-02-02T20:45:32.070+0000] {standard_task_runner.py:105} INFO - Job 10: Subtask save_to_minio
+[2025-02-02T20:45:32.104+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-30T00:00:00+00:00 [running]> on host 12998e952c77
+[2025-02-02T20:45:32.167+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-30T00:00:00+00:00'
+[2025-02-02T20:45:32.168+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:45:34.870+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T20:45:34.871+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T20:45:35.249+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T20:45:35.258+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:45:35.259+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-30T00:00:00+00:00, execution_date=20250130T000000, start_date=20250202T204532, end_date=20250202T204535
+[2025-02-02T20:45:35.289+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T20:45:35.304+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:45:35.307+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

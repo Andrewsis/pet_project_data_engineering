@@ -2,7 +2,7 @@
 x-airflow-common:
   &airflow-common
 
-  image: ${AIRFLOW_IMAGE_NAME:-extending_airflow:latest}
+  build: .
 
   networks:
     - airflow-network
@@ -198,6 +198,12 @@ services:
       - 'minio_data:/data'
       - './create_buckets.sh:/create_buckets.sh'
     restart: always
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+      timeout: 5s
     entrypoint: ["/bin/sh", "-c", "chmod +x /create_buckets.sh && /create_buckets.sh && exec minio server /data --console-address :9001"]
     networks:
       - airflow-network
@@ -221,6 +227,7 @@ services:
       KAFKA_LISTENERS: INSIDE://0.0.0.0:9093,OUTSIDE://0.0.0.0:9092
       KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: "crypto_topic:1:1"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:

@@ -1,4 +1,5 @@
 kafka-python==2.0.2
 pyspark==3.5.4
 apache-airflow-providers-apache-kafka==1.7.0
+apache-airflow-providers-apache-spark==5.0.0
 

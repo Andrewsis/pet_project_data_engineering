@@ -1,0 +1,27 @@
+[2025-02-02T19:17:08.316+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T19:17:08.329+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T19:17:08.335+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T19:17:08.336+0000] {taskinstance.py:2866} INFO - Starting attempt 10 of 15
+[2025-02-02T19:17:08.347+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T19:17:08.352+0000] {standard_task_runner.py:72} INFO - Started process 5819 to run task
+[2025-02-02T19:17:08.354+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '36', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpi444gg4l']
+[2025-02-02T19:17:08.356+0000] {standard_task_runner.py:105} INFO - Job 36: Subtask spark_consumer
+[2025-02-02T19:17:08.392+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 15904aeddad7
+[2025-02-02T19:17:08.449+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='10' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T19:17:08.451+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T19:17:19.990+0000] {main_pipeline.py:73} INFO - DataFrame является потоком
+[2025-02-02T19:17:20.528+0000] {main_pipeline.py:149} INFO - df_parsed является потоком
+[2025-02-02T19:17:20.544+0000] {java_gateway.py:2273} INFO - Callback Server Starting
+[2025-02-02T19:17:20.545+0000] {java_gateway.py:2275} INFO - Socket listening on ('127.0.0.1', 39845)
+[2025-02-02T19:17:25.107+0000] {clientserver.py:561} INFO - Python Server ready to receive messages
+[2025-02-02T19:17:25.108+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T19:17:26.255+0000] {main_pipeline.py:175} INFO - Запись пакета 0 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00146000'), price_change_percent=Decimal('-4.57400000'), weighted_avg_price=Decimal('0.03104059'), prev_close_price=Decimal('0.03192000'), last_price=Decimal('0.03046000'), last_qty=Decimal('4.02750000'), bid_price=Decimal('0.03045000'), bid_qty=Decimal('17.31060000'), ask_price=Decimal('0.03046000'), ask_qty=Decimal('32.08750000'), open_price=Decimal('0.03192000'), high_price=Decimal('0.03196000'), low_price=Decimal('0.03043000'), volume=Decimal('30568.36660000'), quote_volume=Decimal('948.86015386'), close_time=datetime.datetime(2025, 2, 2, 18, 21, 28), first_id=485437433, last_id=485553427, count=115995, trend=False) в PostgreSQL.
+[2025-02-02T19:17:26.256+0000] {main_pipeline.py:178} INFO - Writing batch 0 to PostgreSQL.
+[2025-02-02T19:17:26.318+0000] {main_pipeline.py:179} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00146000'), price_change_percent=Decimal('-4.57400000'), weighted_avg_price=Decimal('0.03104059'), prev_close_price=Decimal('0.03192000'), last_price=Decimal('0.03046000'), last_qty=Decimal('4.02750000'), bid_price=Decimal('0.03045000'), bid_qty=Decimal('17.31060000'), ask_price=Decimal('0.03046000'), ask_qty=Decimal('32.08750000'), open_price=Decimal('0.03192000'), high_price=Decimal('0.03196000'), low_price=Decimal('0.03043000'), volume=Decimal('30568.36660000'), quote_volume=Decimal('948.86015386'), close_time=datetime.datetime(2025, 2, 2, 18, 21, 28), first_id=485437433, last_id=485553427, count=115995, trend=False) to PostgreSQL.
+[2025-02-02T19:17:29.852+0000] {main_pipeline.py:181} INFO - Batch 0 successfully written to PostgreSQL.
+[2025-02-02T19:17:40.797+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T19:17:40.808+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T19:17:40.809+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T191708, end_date=20250202T191740
+[2025-02-02T19:17:40.855+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T19:17:40.870+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T19:17:40.873+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

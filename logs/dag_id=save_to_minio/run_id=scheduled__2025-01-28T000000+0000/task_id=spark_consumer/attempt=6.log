@@ -134,3 +134,569 @@ psycopg2.OperationalError: connection to server at "host.docker.internal" (192.1
 [2025-01-29T15:25:49.155+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
 [2025-01-29T15:25:49.171+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
 [2025-01-29T15:25:49.175+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:51:56.064+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:51:56.076+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-02-02T13:51:56.083+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-02-02T13:51:56.084+0000] {taskinstance.py:2866} INFO - Starting attempt 6 of 6
+[2025-02-02T13:51:56.094+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-28 00:00:00+00:00
+[2025-02-02T13:51:56.099+0000] {standard_task_runner.py:72} INFO - Started process 2787 to run task
+[2025-02-02T13:51:56.102+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-28T00:00:00+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp3e3mgw16']
+[2025-02-02T13:51:56.106+0000] {standard_task_runner.py:105} INFO - Job 18: Subtask spark_consumer
+[2025-02-02T13:51:56.146+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-28T00:00:00+00:00 [running]> on host 774492c58bf0
+[2025-02-02T13:51:56.207+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-28T00:00:00+00:00'
+[2025-02-02T13:51:56.209+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:52:04.228+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 115, in spark_consumer
+    write_to_postgres(df_parsed)
+  File "/opt/airflow/dags/main_pipeline.py", line 120, in write_to_postgres
+    rows = [tuple(row) for row in dataFrame.collect()]
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/dataframe.py", line 1263, in collect
+    sock_info = self._jdf.collectToPython()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o66.collectToPython.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0) (774492c58bf0 executor driver): java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+
+Driver stacktrace:
+	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2856)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2792)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2791)
+	at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+	at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2791)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1247)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:3060)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2994)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2983)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:989)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2393)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2414)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2433)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2458)
+	at org.apache.spark.rdd.RDD.$anonfun$collect$1(RDD.scala:1049)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:410)
+	at org.apache.spark.rdd.RDD.collect(RDD.scala:1048)
+	at org.apache.spark.sql.execution.SparkPlan.executeCollect(SparkPlan.scala:448)
+	at org.apache.spark.sql.Dataset.$anonfun$collectToPython$1(Dataset.scala:4149)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$2(Dataset.scala:4323)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:546)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$1(Dataset.scala:4321)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:4321)
+	at org.apache.spark.sql.Dataset.collectToPython(Dataset.scala:4146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+
+[2025-02-02T13:52:04.287+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-28T00:00:00+00:00, execution_date=20250128T000000, start_date=20250202T135156, end_date=20250202T135204
+[2025-02-02T13:52:04.339+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:52:04.340+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 18 for task spark_consumer (An error occurred while calling o66.collectToPython.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0) (774492c58bf0 executor driver): java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+
+Driver stacktrace:
+	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2856)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2792)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2791)
+	at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+	at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2791)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1247)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:3060)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2994)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2983)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:989)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2393)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2414)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2433)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2458)
+	at org.apache.spark.rdd.RDD.$anonfun$collect$1(RDD.scala:1049)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:410)
+	at org.apache.spark.rdd.RDD.collect(RDD.scala:1048)
+	at org.apache.spark.sql.execution.SparkPlan.executeCollect(SparkPlan.scala:448)
+	at org.apache.spark.sql.Dataset.$anonfun$collectToPython$1(Dataset.scala:4149)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$2(Dataset.scala:4323)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:546)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$1(Dataset.scala:4321)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:4321)
+	at org.apache.spark.sql.Dataset.collectToPython(Dataset.scala:4146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+; 2787)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 115, in spark_consumer
+    write_to_postgres(df_parsed)
+  File "/opt/airflow/dags/main_pipeline.py", line 120, in write_to_postgres
+    rows = [tuple(row) for row in dataFrame.collect()]
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/dataframe.py", line 1263, in collect
+    sock_info = self._jdf.collectToPython()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o66.collectToPython.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0) (774492c58bf0 executor driver): java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+
+Driver stacktrace:
+	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2856)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2792)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2791)
+	at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+	at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2791)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1247)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:3060)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2994)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2983)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:989)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2393)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2414)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2433)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2458)
+	at org.apache.spark.rdd.RDD.$anonfun$collect$1(RDD.scala:1049)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:410)
+	at org.apache.spark.rdd.RDD.collect(RDD.scala:1048)
+	at org.apache.spark.sql.execution.SparkPlan.executeCollect(SparkPlan.scala:448)
+	at org.apache.spark.sql.Dataset.$anonfun$collectToPython$1(Dataset.scala:4149)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$2(Dataset.scala:4323)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:546)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$1(Dataset.scala:4321)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:4321)
+	at org.apache.spark.sql.Dataset.collectToPython(Dataset.scala:4146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+
+[2025-02-02T13:52:04.460+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-02-02T13:52:04.475+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:52:04.478+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

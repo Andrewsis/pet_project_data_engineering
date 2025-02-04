@@ -1,0 +1,1022 @@
+[2025-02-02T13:22:49.647+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:22:49.669+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T13:22:49.680+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T13:22:49.681+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T13:22:49.694+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-29 00:00:00+00:00
+[2025-02-02T13:22:49.704+0000] {standard_task_runner.py:72} INFO - Started process 325 to run task
+[2025-02-02T13:22:49.708+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-29T00:00:00+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpnvf1pdga']
+[2025-02-02T13:22:49.714+0000] {standard_task_runner.py:105} INFO - Job 18: Subtask spark_consumer
+[2025-02-02T13:22:49.773+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [running]> on host e6ed12b0dfa5
+[2025-02-02T13:22:49.859+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T00:00:00+00:00'
+[2025-02-02T13:22:49.860+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:22:55.109+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 63, in spark_consumer
+    .getOrCreate()
+     ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 201, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 436, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+                                       ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/java_gateway.py", line 107, in launch_gateway
+    raise PySparkRuntimeError(
+pyspark.errors.exceptions.base.PySparkRuntimeError: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+[2025-02-02T13:22:55.128+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-29T00:00:00+00:00, execution_date=20250129T000000, start_date=20250202T132249, end_date=20250202T132255
+[2025-02-02T13:22:55.145+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:22:55.148+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 18 for task spark_consumer ([JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.; 325)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 63, in spark_consumer
+    .getOrCreate()
+     ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 201, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 436, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+                                       ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/java_gateway.py", line 107, in launch_gateway
+    raise PySparkRuntimeError(
+pyspark.errors.exceptions.base.PySparkRuntimeError: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+[2025-02-02T13:22:55.180+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-02-02T13:22:55.198+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:22:55.200+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:37:30.618+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:37:30.629+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T13:37:30.636+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T13:37:30.637+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T13:37:30.646+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-29 00:00:00+00:00
+[2025-02-02T13:37:30.650+0000] {standard_task_runner.py:72} INFO - Started process 711 to run task
+[2025-02-02T13:37:30.652+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-29T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpvrscqe1m']
+[2025-02-02T13:37:30.654+0000] {standard_task_runner.py:105} INFO - Job 11: Subtask spark_consumer
+[2025-02-02T13:37:30.686+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [running]> on host 64f2a5764477
+[2025-02-02T13:37:30.741+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T00:00:00+00:00'
+[2025-02-02T13:37:30.742+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:37:41.776+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2025-02-02T13:37:42.592+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:37:43.376+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:37:44.160+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:37:44.971+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:37:45.782+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:37:46.565+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:37:47.416+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:37:48.499+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:37:49.063+0000] {sql.py:681} INFO - Loaded 760 rows into crypto_data so far
+[2025-02-02T13:37:49.064+0000] {sql.py:694} INFO - Done loading. Loaded a total of 8760 rows into crypto_data
+[2025-02-02T13:37:49.068+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T13:37:49.076+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:37:49.077+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-29T00:00:00+00:00, execution_date=20250129T000000, start_date=20250202T133730, end_date=20250202T133749
+[2025-02-02T13:37:49.108+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T13:37:49.118+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:37:49.120+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:52:12.246+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:52:12.260+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T13:52:12.266+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T13:52:12.267+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T13:52:12.277+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-29 00:00:00+00:00
+[2025-02-02T13:52:12.281+0000] {standard_task_runner.py:72} INFO - Started process 3025 to run task
+[2025-02-02T13:52:12.284+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-29T00:00:00+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpm74q6vae']
+[2025-02-02T13:52:12.286+0000] {standard_task_runner.py:105} INFO - Job 21: Subtask spark_consumer
+[2025-02-02T13:52:12.338+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [running]> on host 774492c58bf0
+[2025-02-02T13:52:12.444+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T00:00:00+00:00'
+[2025-02-02T13:52:12.446+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:52:20.968+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 115, in spark_consumer
+    write_to_postgres(df_parsed)
+  File "/opt/airflow/dags/main_pipeline.py", line 120, in write_to_postgres
+    rows = [tuple(row) for row in dataFrame.collect()]
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/dataframe.py", line 1263, in collect
+    sock_info = self._jdf.collectToPython()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o66.collectToPython.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0) (774492c58bf0 executor driver): java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+
+Driver stacktrace:
+	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2856)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2792)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2791)
+	at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+	at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2791)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1247)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:3060)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2994)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2983)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:989)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2393)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2414)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2433)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2458)
+	at org.apache.spark.rdd.RDD.$anonfun$collect$1(RDD.scala:1049)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:410)
+	at org.apache.spark.rdd.RDD.collect(RDD.scala:1048)
+	at org.apache.spark.sql.execution.SparkPlan.executeCollect(SparkPlan.scala:448)
+	at org.apache.spark.sql.Dataset.$anonfun$collectToPython$1(Dataset.scala:4149)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$2(Dataset.scala:4323)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:546)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$1(Dataset.scala:4321)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:4321)
+	at org.apache.spark.sql.Dataset.collectToPython(Dataset.scala:4146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+
+[2025-02-02T13:52:21.034+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-29T00:00:00+00:00, execution_date=20250129T000000, start_date=20250202T135212, end_date=20250202T135221
+[2025-02-02T13:52:21.098+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:52:21.099+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 21 for task spark_consumer (An error occurred while calling o66.collectToPython.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0) (774492c58bf0 executor driver): java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+
+Driver stacktrace:
+	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2856)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2792)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2791)
+	at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+	at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2791)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1247)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:3060)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2994)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2983)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:989)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2393)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2414)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2433)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2458)
+	at org.apache.spark.rdd.RDD.$anonfun$collect$1(RDD.scala:1049)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:410)
+	at org.apache.spark.rdd.RDD.collect(RDD.scala:1048)
+	at org.apache.spark.sql.execution.SparkPlan.executeCollect(SparkPlan.scala:448)
+	at org.apache.spark.sql.Dataset.$anonfun$collectToPython$1(Dataset.scala:4149)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$2(Dataset.scala:4323)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:546)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$1(Dataset.scala:4321)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:4321)
+	at org.apache.spark.sql.Dataset.collectToPython(Dataset.scala:4146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+; 3025)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 115, in spark_consumer
+    write_to_postgres(df_parsed)
+  File "/opt/airflow/dags/main_pipeline.py", line 120, in write_to_postgres
+    rows = [tuple(row) for row in dataFrame.collect()]
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/dataframe.py", line 1263, in collect
+    sock_info = self._jdf.collectToPython()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o66.collectToPython.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0) (774492c58bf0 executor driver): java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+
+Driver stacktrace:
+	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2856)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2792)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2791)
+	at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+	at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2791)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1247)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1247)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:3060)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2994)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2983)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:989)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2393)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2414)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2433)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2458)
+	at org.apache.spark.rdd.RDD.$anonfun$collect$1(RDD.scala:1049)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:410)
+	at org.apache.spark.rdd.RDD.collect(RDD.scala:1048)
+	at org.apache.spark.sql.execution.SparkPlan.executeCollect(SparkPlan.scala:448)
+	at org.apache.spark.sql.Dataset.$anonfun$collectToPython$1(Dataset.scala:4149)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$2(Dataset.scala:4323)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:546)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$1(Dataset.scala:4321)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:4321)
+	at org.apache.spark.sql.Dataset.collectToPython(Dataset.scala:4146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: assertion failed: latest offset -2920 does not equal -1
+	at scala.Predef$.assert(Predef.scala:223)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.resolveRange(KafkaSourceRDD.scala:133)
+	at org.apache.spark.sql.kafka010.KafkaSourceRDD.compute(KafkaSourceRDD.scala:75)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.sql.execution.SQLExecutionRDD.compute(SQLExecutionRDD.scala:55)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+
+[2025-02-02T13:52:21.231+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-02-02T13:52:21.258+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:52:21.261+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T14:00:20.988+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T14:00:21.000+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T14:00:21.007+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T14:00:21.008+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T14:00:21.017+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-29 00:00:00+00:00
+[2025-02-02T14:00:21.022+0000] {standard_task_runner.py:72} INFO - Started process 751 to run task
+[2025-02-02T14:00:21.024+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-29T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpbigw2swy']
+[2025-02-02T14:00:21.026+0000] {standard_task_runner.py:105} INFO - Job 11: Subtask spark_consumer
+[2025-02-02T14:00:21.060+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [running]> on host f0b94dd433bd
+[2025-02-02T14:00:21.121+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T00:00:00+00:00'
+[2025-02-02T14:00:21.122+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T14:00:27.788+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 114, in spark_consumer
+    write_to_postgres(df_parsed)
+  File "/opt/airflow/dags/main_pipeline.py", line 119, in write_to_postgres
+    rows = [tuple(row) for row in dataFrame.collect()]
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/dataframe.py", line 1263, in collect
+    sock_info = self._jdf.collectToPython()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: Queries with streaming sources must be executed with writeStream.start();
+kafka
+[2025-02-02T14:00:27.809+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-29T00:00:00+00:00, execution_date=20250129T000000, start_date=20250202T140021, end_date=20250202T140027
+[2025-02-02T14:00:27.826+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T14:00:27.827+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 11 for task spark_consumer (Queries with streaming sources must be executed with writeStream.start();
+kafka; 751)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 114, in spark_consumer
+    write_to_postgres(df_parsed)
+  File "/opt/airflow/dags/main_pipeline.py", line 119, in write_to_postgres
+    rows = [tuple(row) for row in dataFrame.collect()]
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/dataframe.py", line 1263, in collect
+    sock_info = self._jdf.collectToPython()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: Queries with streaming sources must be executed with writeStream.start();
+kafka
+[2025-02-02T14:00:27.863+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-02-02T14:00:27.897+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T14:00:27.899+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T14:18:11.298+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T14:18:11.310+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T14:18:11.318+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T14:18:11.319+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T14:18:11.330+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-29 00:00:00+00:00
+[2025-02-02T14:18:11.334+0000] {standard_task_runner.py:72} INFO - Started process 1898 to run task
+[2025-02-02T14:18:11.337+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-29T00:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpf1y0hzcc']
+[2025-02-02T14:18:11.338+0000] {standard_task_runner.py:105} INFO - Job 15: Subtask spark_consumer
+[2025-02-02T14:18:11.373+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [running]> on host 5ab92388ff22
+[2025-02-02T14:18:11.432+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T00:00:00+00:00'
+[2025-02-02T14:18:11.434+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T14:18:23.034+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2025-02-02T14:18:23.876+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T14:18:24.655+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T14:18:25.460+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T14:18:26.433+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T14:18:27.177+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T14:18:27.930+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T14:18:28.675+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T14:18:29.434+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T14:18:30.183+0000] {sql.py:681} INFO - Loaded 760 rows into crypto_data so far
+[2025-02-02T14:18:30.184+0000] {sql.py:694} INFO - Done loading. Loaded a total of 8760 rows into crypto_data
+[2025-02-02T14:18:30.190+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T14:18:30.199+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T14:18:30.200+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-29T00:00:00+00:00, execution_date=20250129T000000, start_date=20250202T141811, end_date=20250202T141830
+[2025-02-02T14:18:30.263+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T14:18:30.276+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T14:18:30.279+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T15:55:09.627+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T15:55:09.639+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T15:55:09.646+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T15:55:09.647+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T15:55:09.656+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-29 00:00:00+00:00
+[2025-02-02T15:55:09.660+0000] {standard_task_runner.py:72} INFO - Started process 814 to run task
+[2025-02-02T15:55:09.662+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-29T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp9gk8h089']
+[2025-02-02T15:55:09.664+0000] {standard_task_runner.py:105} INFO - Job 11: Subtask spark_consumer
+[2025-02-02T15:55:09.697+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [running]> on host 7bf4a44673c6
+[2025-02-02T15:55:09.759+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T00:00:00+00:00'
+[2025-02-02T15:55:09.760+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T15:55:14.639+0000] {logging_mixin.py:190} INFO - root
+ |-- key: binary (nullable = true)
+ |-- value: binary (nullable = true)
+ |-- topic: string (nullable = true)
+ |-- partition: integer (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- timestamp: timestamp (nullable = true)
+ |-- timestampType: integer (nullable = true)
+[2025-02-02T15:55:14.883+0000] {logging_mixin.py:190} INFO - root
+ |-- symbol: string (nullable = true)
+ |-- priceChange: decimal(20,8) (nullable = true)
+ |-- priceChangePercent: decimal(20,8) (nullable = true)
+ |-- weightedAvgPrice: decimal(20,8) (nullable = true)
+ |-- prevClosePrice: decimal(20,8) (nullable = true)
+ |-- lastPrice: decimal(20,8) (nullable = true)
+ |-- lastQty: decimal(20,8) (nullable = true)
+ |-- bidPrice: decimal(20,8) (nullable = true)
+ |-- bidQty: decimal(20,8) (nullable = true)
+ |-- askPrice: decimal(20,8) (nullable = true)
+ |-- askQty: decimal(20,8) (nullable = true)
+ |-- openPrice: decimal(20,8) (nullable = true)
+ |-- highPrice: decimal(20,8) (nullable = true)
+ |-- lowPrice: decimal(20,8) (nullable = true)
+ |-- volume: decimal(20,8) (nullable = true)
+ |-- quoteVolume: decimal(20,8) (nullable = true)
+ |-- openTime: long (nullable = true)
+ |-- closeTime: long (nullable = true)
+ |-- firstId: long (nullable = true)
+ |-- lastId: long (nullable = true)
+ |-- count: long (nullable = true)
+[2025-02-02T15:55:14.984+0000] {java_gateway.py:2273} INFO - Callback Server Starting
+[2025-02-02T15:55:14.986+0000] {java_gateway.py:2275} INFO - Socket listening on ('127.0.0.1', 44981)
+[2025-02-02T15:55:15.215+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T15:55:15.227+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T15:55:15.228+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-29T00:00:00+00:00, execution_date=20250129T000000, start_date=20250202T155509, end_date=20250202T155515
+[2025-02-02T15:55:15.252+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T15:55:15.266+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T15:55:15.268+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T16:39:38.879+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T16:39:38.918+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T16:39:38.931+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T16:39:38.933+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T16:39:38.954+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-29 00:00:00+00:00
+[2025-02-02T16:39:38.961+0000] {standard_task_runner.py:72} INFO - Started process 2354 to run task
+[2025-02-02T16:39:38.964+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-29T00:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp9_wlqehk']
+[2025-02-02T16:39:38.967+0000] {standard_task_runner.py:105} INFO - Job 15: Subtask spark_consumer
+[2025-02-02T16:39:39.022+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [running]> on host 4061bda98b6f
+[2025-02-02T16:39:39.097+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T00:00:00+00:00'
+[2025-02-02T16:39:39.099+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T16:40:02.437+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2025-02-02T16:40:03.163+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T16:40:03.894+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T16:40:04.617+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T16:40:05.330+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T16:40:06.035+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T16:40:06.631+0000] {sql.py:681} INFO - Loaded 840 rows into crypto_data so far
+[2025-02-02T16:40:06.632+0000] {sql.py:694} INFO - Done loading. Loaded a total of 5840 rows into crypto_data
+[2025-02-02T16:40:06.635+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T16:40:06.642+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T16:40:06.643+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-29T00:00:00+00:00, execution_date=20250129T000000, start_date=20250202T163938, end_date=20250202T164006
+[2025-02-02T16:40:06.672+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T16:40:06.683+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T16:40:06.685+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T18:50:01.709+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T18:50:01.722+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T18:50:01.730+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T18:50:01.731+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T18:50:01.741+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-29 00:00:00+00:00
+[2025-02-02T18:50:01.745+0000] {standard_task_runner.py:72} INFO - Started process 2375 to run task
+[2025-02-02T18:50:01.747+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-29T00:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmptznsf5nt']
+[2025-02-02T18:50:01.749+0000] {standard_task_runner.py:105} INFO - Job 16: Subtask spark_consumer
+[2025-02-02T18:50:01.785+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [running]> on host 15904aeddad7
+[2025-02-02T18:50:01.847+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T00:00:00+00:00'
+[2025-02-02T18:50:01.849+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T18:50:19.176+0000] {java_gateway.py:2273} INFO - Callback Server Starting
+[2025-02-02T18:50:19.178+0000] {java_gateway.py:2275} INFO - Socket listening on ('127.0.0.1', 42551)
+[2025-02-02T18:50:29.709+0000] {clientserver.py:561} INFO - Python Server ready to receive messages
+[2025-02-02T18:50:29.711+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T18:50:30.079+0000] {main_pipeline.py:162} INFO - Batch 0 successfully written to PostgreSQL.
+[2025-02-02T18:50:39.445+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T18:50:39.454+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T18:50:39.456+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-29T00:00:00+00:00, execution_date=20250129T000000, start_date=20250202T185001, end_date=20250202T185039
+[2025-02-02T18:50:39.508+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T18:50:39.524+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T18:50:39.527+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T19:21:19.208+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T19:21:19.220+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T19:21:19.226+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T19:21:19.227+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T19:21:19.236+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-29 00:00:00+00:00
+[2025-02-02T19:21:19.240+0000] {standard_task_runner.py:72} INFO - Started process 897 to run task
+[2025-02-02T19:21:19.242+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-29T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpx9vuauru']
+[2025-02-02T19:21:19.244+0000] {standard_task_runner.py:105} INFO - Job 11: Subtask spark_consumer
+[2025-02-02T19:21:19.276+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [running]> on host dfbcbb9a3a68
+[2025-02-02T19:21:19.333+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T00:00:00+00:00'
+[2025-02-02T19:21:19.334+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T19:21:23.960+0000] {main_pipeline.py:73} INFO - DataFrame является потоком
+[2025-02-02T19:21:24.492+0000] {main_pipeline.py:149} INFO - df_parsed является потоком
+[2025-02-02T19:21:24.512+0000] {java_gateway.py:2273} INFO - Callback Server Starting
+[2025-02-02T19:21:24.513+0000] {java_gateway.py:2275} INFO - Socket listening on ('127.0.0.1', 33025)
+[2025-02-02T19:21:26.483+0000] {clientserver.py:561} INFO - Python Server ready to receive messages
+[2025-02-02T19:21:26.484+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T19:21:27.469+0000] {main_pipeline.py:175} INFO - Запись пакета 0 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00165000'), price_change_percent=Decimal('-5.22000000'), weighted_avg_price=Decimal('0.03083062'), prev_close_price=Decimal('0.03160000'), last_price=Decimal('0.02996000'), last_qty=Decimal('3.43440000'), bid_price=Decimal('0.02996000'), bid_qty=Decimal('25.82290000'), ask_price=Decimal('0.02997000'), ask_qty=Decimal('21.77020000'), open_price=Decimal('0.03161000'), high_price=Decimal('0.03164000'), low_price=Decimal('0.02983000'), volume=Decimal('37675.78250000'), quote_volume=Decimal('1161.56779859'), close_time=datetime.datetime(2025, 2, 2, 19, 19, 50), first_id=485441387, last_id=485575574, count=134188, trend=False) в PostgreSQL.
+[2025-02-02T19:21:27.470+0000] {main_pipeline.py:178} INFO - Writing batch 0 to PostgreSQL.
+[2025-02-02T19:21:27.526+0000] {main_pipeline.py:179} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00165000'), price_change_percent=Decimal('-5.22000000'), weighted_avg_price=Decimal('0.03083062'), prev_close_price=Decimal('0.03160000'), last_price=Decimal('0.02996000'), last_qty=Decimal('3.43440000'), bid_price=Decimal('0.02996000'), bid_qty=Decimal('25.82290000'), ask_price=Decimal('0.02997000'), ask_qty=Decimal('21.77020000'), open_price=Decimal('0.03161000'), high_price=Decimal('0.03164000'), low_price=Decimal('0.02983000'), volume=Decimal('37675.78250000'), quote_volume=Decimal('1161.56779859'), close_time=datetime.datetime(2025, 2, 2, 19, 19, 50), first_id=485441387, last_id=485575574, count=134188, trend=False) to PostgreSQL.
+[2025-02-02T19:21:30.067+0000] {main_pipeline.py:181} INFO - Batch 0 successfully written to PostgreSQL.
+[2025-02-02T19:21:44.749+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T19:21:44.768+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T19:21:44.777+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-29T00:00:00+00:00, execution_date=20250129T000000, start_date=20250202T192119, end_date=20250202T192144
+[2025-02-02T19:21:44.821+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T19:21:44.838+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T19:21:44.840+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T20:18:35.388+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:18:35.401+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T20:18:35.407+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [queued]>
+[2025-02-02T20:18:35.408+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:18:35.417+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-29 00:00:00+00:00
+[2025-02-02T20:18:35.421+0000] {standard_task_runner.py:72} INFO - Started process 907 to run task
+[2025-02-02T20:18:35.423+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-29T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp377148ks']
+[2025-02-02T20:18:35.426+0000] {standard_task_runner.py:105} INFO - Job 11: Subtask spark_consumer
+[2025-02-02T20:18:35.465+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-29T00:00:00+00:00 [running]> on host b0b992709001
+[2025-02-02T20:18:35.523+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T00:00:00+00:00'
+[2025-02-02T20:18:35.524+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:18:40.713+0000] {main_pipeline.py:145} INFO - df_parsed является потоком
+[2025-02-02T20:18:40.730+0000] {java_gateway.py:2273} INFO - Callback Server Starting
+[2025-02-02T20:18:40.733+0000] {java_gateway.py:2275} INFO - Socket listening on ('127.0.0.1', 33379)
+[2025-02-02T20:18:42.651+0000] {clientserver.py:561} INFO - Python Server ready to receive messages
+[2025-02-02T20:18:42.652+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:18:42.688+0000] {main_pipeline.py:169} INFO - Batch 0 пустой.
+[2025-02-02T20:18:42.689+0000] {main_pipeline.py:174} INFO - Writing batch 0 to PostgreSQL.
+[2025-02-02T20:18:42.756+0000] {main_pipeline.py:175} INFO - Writing batch with data: None to PostgreSQL.
+[2025-02-02T20:18:43.019+0000] {main_pipeline.py:177} INFO - Batch 0 successfully written to PostgreSQL.
+[2025-02-02T20:19:40.949+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T20:19:40.959+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:19:40.960+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-29T00:00:00+00:00, execution_date=20250129T000000, start_date=20250202T201835, end_date=20250202T201940
+[2025-02-02T20:19:41.001+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T20:19:41.012+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:19:41.014+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -259,3 +259,157 @@ DETAIL:  Failing row contains (SHIBUSDT, -0.00000074, -3.93000000, 0.00001826, 0
 [2025-01-29T16:04:20.912+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
 [2025-01-29T16:04:20.926+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
 [2025-01-29T16:04:20.928+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:26:48.683+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:26:48.703+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-02-02T13:26:48.719+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-02-02T13:26:48.722+0000] {taskinstance.py:2866} INFO - Starting attempt 4 of 6
+[2025-02-02T13:26:48.739+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-28 00:00:00+00:00
+[2025-02-02T13:26:48.749+0000] {standard_task_runner.py:72} INFO - Started process 1475 to run task
+[2025-02-02T13:26:48.754+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-28T00:00:00+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpkc93i86v']
+[2025-02-02T13:26:48.759+0000] {standard_task_runner.py:105} INFO - Job 38: Subtask spark_consumer
+[2025-02-02T13:26:48.822+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-28T00:00:00+00:00 [running]> on host e6ed12b0dfa5
+[2025-02-02T13:26:48.914+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-28T00:00:00+00:00'
+[2025-02-02T13:26:48.916+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:27:45.983+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2025-02-02T13:27:47.332+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:27:48.636+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:27:49.899+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:27:51.098+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:27:52.673+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:27:53.793+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:27:54.874+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:27:55.954+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:27:57.097+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:27:58.231+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:27:59.387+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:28:00.479+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:28:01.605+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:28:02.709+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:28:03.870+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:28:04.890+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:28:05.920+0000] {sql.py:681} INFO - Loaded 1000 rows into crypto_data so far
+[2025-02-02T13:28:06.849+0000] {sql.py:681} INFO - Loaded 520 rows into crypto_data so far
+[2025-02-02T13:28:06.850+0000] {sql.py:694} INFO - Done loading. Loaded a total of 17520 rows into crypto_data
+[2025-02-02T13:28:06.871+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T13:28:06.885+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:28:06.886+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-28T00:00:00+00:00, execution_date=20250128T000000, start_date=20250202T132648, end_date=20250202T132806
+[2025-02-02T13:28:06.989+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T13:28:07.190+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:51:20.786+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:51:20.799+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-02-02T13:51:20.805+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-02-02T13:51:20.806+0000] {taskinstance.py:2866} INFO - Starting attempt 4 of 6
+[2025-02-02T13:51:20.815+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-28 00:00:00+00:00
+[2025-02-02T13:51:20.819+0000] {standard_task_runner.py:72} INFO - Started process 2330 to run task
+[2025-02-02T13:51:20.821+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-28T00:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpjl3amzqw']
+[2025-02-02T13:51:20.823+0000] {standard_task_runner.py:105} INFO - Job 16: Subtask spark_consumer
+[2025-02-02T13:51:20.858+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-28T00:00:00+00:00 [running]> on host 774492c58bf0
+[2025-02-02T13:51:20.912+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-28T00:00:00+00:00'
+[2025-02-02T13:51:20.913+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:51:25.686+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 70, in spark_consumer
+    .load()
+     ^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/readwriter.py", line 314, in load
+    return self._df(self._jreader.load())
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.IllegalArgumentException: starting offset can't be latest for batch queries on Kafka
+[2025-02-02T13:51:25.706+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-28T00:00:00+00:00, execution_date=20250128T000000, start_date=20250202T135120, end_date=20250202T135125
+[2025-02-02T13:51:25.722+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:51:25.723+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 16 for task spark_consumer (starting offset can't be latest for batch queries on Kafka; 2330)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 70, in spark_consumer
+    .load()
+     ^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/readwriter.py", line 314, in load
+    return self._df(self._jreader.load())
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.IllegalArgumentException: starting offset can't be latest for batch queries on Kafka
+[2025-02-02T13:51:25.753+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-02-02T13:51:25.772+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:51:25.775+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

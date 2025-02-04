@@ -1,0 +1,436 @@
+[2025-02-01T21:56:23.819+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-01T21:56:23.833+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [queued]>
+[2025-02-01T21:56:23.841+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [queued]>
+[2025-02-01T21:56:23.842+0000] {taskinstance.py:2866} INFO - Starting attempt 3 of 6
+[2025-02-01T21:56:23.852+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-31 00:00:00+00:00
+[2025-02-01T21:56:23.856+0000] {standard_task_runner.py:72} INFO - Started process 1073 to run task
+[2025-02-01T21:56:23.858+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-31T00:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpl0c627t2']
+[2025-02-01T21:56:23.860+0000] {standard_task_runner.py:105} INFO - Job 12: Subtask spark_consumer
+[2025-02-01T21:56:23.896+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [running]> on host 2f541c1544a4
+[2025-02-01T21:56:23.955+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-31T00:00:00+00:00'
+[2025-02-01T21:56:23.956+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-01T21:56:28.348+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 71, in spark_consumer
+    .load()
+     ^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/readwriter.py", line 314, in load
+    return self._df(self._jreader.load())
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.IllegalArgumentException: starting offset can't be latest for batch queries on Kafka
+[2025-02-01T21:56:28.373+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-31T00:00:00+00:00, execution_date=20250131T000000, start_date=20250201T215623, end_date=20250201T215628
+[2025-02-01T21:56:28.392+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-01T21:56:28.393+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 12 for task spark_consumer (starting offset can't be latest for batch queries on Kafka; 1073)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 71, in spark_consumer
+    .load()
+     ^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/readwriter.py", line 314, in load
+    return self._df(self._jreader.load())
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.IllegalArgumentException: starting offset can't be latest for batch queries on Kafka
+[2025-02-01T21:56:28.443+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-02-01T21:56:28.460+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-01T21:56:28.462+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-01T22:23:14.051+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-01T22:23:14.064+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [queued]>
+[2025-02-01T22:23:14.070+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [queued]>
+[2025-02-01T22:23:14.071+0000] {taskinstance.py:2866} INFO - Starting attempt 3 of 6
+[2025-02-01T22:23:14.080+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-31 00:00:00+00:00
+[2025-02-01T22:23:14.084+0000] {standard_task_runner.py:72} INFO - Started process 870 to run task
+[2025-02-01T22:23:14.086+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-31T00:00:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp5po9mehd']
+[2025-02-01T22:23:14.088+0000] {standard_task_runner.py:105} INFO - Job 7: Subtask spark_consumer
+[2025-02-01T22:23:14.122+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [running]> on host aa1cd894ce8b
+[2025-02-01T22:23:14.175+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-31T00:00:00+00:00'
+[2025-02-01T22:23:14.177+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-01T22:23:20.089+0000] {java_gateway.py:2273} INFO - Callback Server Starting
+[2025-02-01T22:23:20.090+0000] {java_gateway.py:2275} INFO - Socket listening on ('127.0.0.1', 43575)
+[2025-02-01T22:23:22.905+0000] {clientserver.py:561} INFO - Python Server ready to receive messages
+[2025-02-01T22:23:22.907+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-01T22:23:24.933+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2025-02-01T22:23:24.944+0000] {clientserver.py:621} ERROR - There was an exception while executing the Python Proxy on the Python Side.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 120, in call
+    raise e
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 117, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+  File "/opt/airflow/dags/main_pipeline.py", line 136, in write_batch
+    hook.insert_rows(table='crypto_data', rows=[data], target_fields=data.keys())
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/hooks/sql.py", line 679, in insert_rows
+    cur.executemany(sql, values)
+psycopg2.errors.UndefinedColumn: column "pricechange" of relation "crypto_data" does not exist
+LINE 1: INSERT INTO crypto_data (symbol, priceChange, priceChangePer...
+                                         ^
+
+[2025-02-01T22:23:25.060+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 121, in spark_consumer
+    write_to_postgres(df_parsed)
+  File "/opt/airflow/dags/main_pipeline.py", line 142, in write_to_postgres
+    .awaitTermination()
+     ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/streaming/query.py", line 221, in awaitTermination
+    return self._jsq.awaitTermination()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.StreamingQueryException: [STREAM_FAILED] Query [id = ef96bddc-e6a4-40a8-91f3-0616b056e7b8, runId = 23763815-fa6a-4e41-97af-d1d45308b5bb] terminated with exception: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 120, in call
+    raise e
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 117, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+  File "/opt/airflow/dags/main_pipeline.py", line 136, in write_batch
+    hook.insert_rows(table='crypto_data', rows=[data], target_fields=data.keys())
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/hooks/sql.py", line 679, in insert_rows
+    cur.executemany(sql, values)
+psycopg2.errors.UndefinedColumn: column "pricechange" of relation "crypto_data" does not exist
+LINE 1: INSERT INTO crypto_data (symbol, priceChange, priceChangePer...
+                                         ^
+
+
+[2025-02-01T22:23:25.076+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-31T00:00:00+00:00, execution_date=20250131T000000, start_date=20250201T222314, end_date=20250201T222325
+[2025-02-01T22:23:25.091+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-01T22:23:25.092+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 7 for task spark_consumer ([STREAM_FAILED] Query [id = ef96bddc-e6a4-40a8-91f3-0616b056e7b8, runId = 23763815-fa6a-4e41-97af-d1d45308b5bb] terminated with exception: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 120, in call
+    raise e
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 117, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+  File "/opt/airflow/dags/main_pipeline.py", line 136, in write_batch
+    hook.insert_rows(table='crypto_data', rows=[data], target_fields=data.keys())
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/hooks/sql.py", line 679, in insert_rows
+    cur.executemany(sql, values)
+psycopg2.errors.UndefinedColumn: column "pricechange" of relation "crypto_data" does not exist
+LINE 1: INSERT INTO crypto_data (symbol, priceChange, priceChangePer...
+                                         ^
+
+; 870)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 121, in spark_consumer
+    write_to_postgres(df_parsed)
+  File "/opt/airflow/dags/main_pipeline.py", line 142, in write_to_postgres
+    .awaitTermination()
+     ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/streaming/query.py", line 221, in awaitTermination
+    return self._jsq.awaitTermination()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.StreamingQueryException: [STREAM_FAILED] Query [id = ef96bddc-e6a4-40a8-91f3-0616b056e7b8, runId = 23763815-fa6a-4e41-97af-d1d45308b5bb] terminated with exception: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 120, in call
+    raise e
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 117, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+  File "/opt/airflow/dags/main_pipeline.py", line 136, in write_batch
+    hook.insert_rows(table='crypto_data', rows=[data], target_fields=data.keys())
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/hooks/sql.py", line 679, in insert_rows
+    cur.executemany(sql, values)
+psycopg2.errors.UndefinedColumn: column "pricechange" of relation "crypto_data" does not exist
+LINE 1: INSERT INTO crypto_data (symbol, priceChange, priceChangePer...
+                                         ^
+
+
+[2025-02-01T22:23:25.127+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-02-01T22:23:25.146+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-01T22:23:25.148+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:23:21.303+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:23:21.324+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [queued]>
+[2025-02-02T13:23:21.335+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [queued]>
+[2025-02-02T13:23:21.337+0000] {taskinstance.py:2866} INFO - Starting attempt 3 of 6
+[2025-02-02T13:23:21.352+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-31 00:00:00+00:00
+[2025-02-02T13:23:21.363+0000] {standard_task_runner.py:72} INFO - Started process 1030 to run task
+[2025-02-02T13:23:21.366+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-31T00:00:00+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp5eaxk8cm']
+[2025-02-02T13:23:21.370+0000] {standard_task_runner.py:105} INFO - Job 27: Subtask spark_consumer
+[2025-02-02T13:23:21.431+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [running]> on host e6ed12b0dfa5
+[2025-02-02T13:23:21.532+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-31T00:00:00+00:00'
+[2025-02-02T13:23:21.534+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:23:26.592+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 63, in spark_consumer
+    .getOrCreate()
+     ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 201, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 436, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+                                       ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/java_gateway.py", line 107, in launch_gateway
+    raise PySparkRuntimeError(
+pyspark.errors.exceptions.base.PySparkRuntimeError: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+[2025-02-02T13:23:26.616+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-31T00:00:00+00:00, execution_date=20250131T000000, start_date=20250202T132321, end_date=20250202T132326
+[2025-02-02T13:23:26.633+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:23:26.635+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 27 for task spark_consumer ([JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.; 1030)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 63, in spark_consumer
+    .getOrCreate()
+     ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 201, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/context.py", line 436, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+                                       ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/java_gateway.py", line 107, in launch_gateway
+    raise PySparkRuntimeError(
+pyspark.errors.exceptions.base.PySparkRuntimeError: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+[2025-02-02T13:23:26.680+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-02-02T13:23:26.699+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:23:26.702+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

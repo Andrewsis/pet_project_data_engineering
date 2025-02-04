@@ -1,0 +1,336 @@
+[2025-02-02T20:37:13.262+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:37:13.274+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:37:13.280+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:37:13.281+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:37:13.291+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T20:37:13.295+0000] {standard_task_runner.py:72} INFO - Started process 657 to run task
+[2025-02-02T20:37:13.297+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'spark_consumer_dag', 'spark_consumer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/consumer.py', '--cfg-path', '/tmp/tmpba3307py']
+[2025-02-02T20:37:13.299+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask spark_consumer
+[2025-02-02T20:37:13.333+0000] {task_command.py:467} INFO - Running <TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 0abbc615c48a
+[2025-02-02T20:37:13.389+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='spark_consumer_dag' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T20:37:13.390+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:37:47.646+0000] {consumer.py:94} INFO - df_parsed является потоком
+[2025-02-02T20:37:47.661+0000] {java_gateway.py:2273} INFO - Callback Server Starting
+[2025-02-02T20:37:47.666+0000] {java_gateway.py:2275} INFO - Socket listening on ('127.0.0.1', 43171)
+[2025-02-02T20:37:51.992+0000] {clientserver.py:561} INFO - Python Server ready to receive messages
+[2025-02-02T20:37:51.994+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:37:52.028+0000] {consumer.py:118} INFO - Batch 0 пустой.
+[2025-02-02T20:37:52.029+0000] {consumer.py:123} INFO - Writing batch 0 to PostgreSQL.
+[2025-02-02T20:37:52.103+0000] {consumer.py:124} INFO - Writing batch with data: None to PostgreSQL.
+[2025-02-02T20:37:52.405+0000] {consumer.py:126} INFO - Batch 0 successfully written to PostgreSQL.
+[2025-02-02T20:38:53.286+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-02-02T20:38:53.291+0000] {process_utils.py:132} INFO - Sending 15 to group 657. PIDs of all processes in the group: [659, 657]
+[2025-02-02T20:38:53.292+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 657
+[2025-02-02T20:38:53.293+0000] {taskinstance.py:3093} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-02-02T20:38:53.307+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/consumer.py", line 104, in spark_consumer
+    query.awaitTermination()
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/streaming/query.py", line 221, in awaitTermination
+    return self._jsq.awaitTermination()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1321, in __call__
+    answer = self.gateway_client.send_command(command)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/socket.py", line 718, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3095, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2025-02-02T20:38:53.319+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=spark_consumer_dag, task_id=spark_consumer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T203713, end_date=20250202T203853
+[2025-02-02T20:38:53.349+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:38:53.794+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=657, status='terminated', exitcode=2, started='20:37:13') (657) terminated with exit code 2
+[2025-02-02T20:38:53.822+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=659, status='terminated', started='20:37:13') (659) terminated with exit code None
+[2025-02-02T20:38:53.824+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 143
+[2025-02-02T20:38:53.843+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:38:55.352+0000] {standard_task_runner.py:217} INFO - Process not found (most likely exited), stop collecting metrics
+[2025-02-02T20:40:28.902+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:40:28.917+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:40:28.925+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:40:28.926+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:40:28.937+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T20:40:28.941+0000] {standard_task_runner.py:72} INFO - Started process 217 to run task
+[2025-02-02T20:40:28.944+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'spark_consumer_dag', 'spark_consumer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/consumer.py', '--cfg-path', '/tmp/tmpruxo840x']
+[2025-02-02T20:40:28.946+0000] {standard_task_runner.py:105} INFO - Job 3: Subtask spark_consumer
+[2025-02-02T20:40:28.983+0000] {task_command.py:467} INFO - Running <TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 7ed9c07bce51
+[2025-02-02T20:40:29.044+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='spark_consumer_dag' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T20:40:29.046+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:40:57.880+0000] {consumer.py:94} INFO - df_parsed является потоком
+[2025-02-02T20:40:57.900+0000] {java_gateway.py:2273} INFO - Callback Server Starting
+[2025-02-02T20:40:57.902+0000] {java_gateway.py:2275} INFO - Socket listening on ('127.0.0.1', 32799)
+[2025-02-02T20:41:00.108+0000] {clientserver.py:561} INFO - Python Server ready to receive messages
+[2025-02-02T20:41:00.109+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:41:00.157+0000] {consumer.py:118} INFO - Batch 0 пустой.
+[2025-02-02T20:41:00.158+0000] {consumer.py:123} INFO - Writing batch 0 to PostgreSQL.
+[2025-02-02T20:41:00.241+0000] {consumer.py:124} INFO - Writing batch with data: None to PostgreSQL.
+[2025-02-02T20:41:00.518+0000] {consumer.py:126} INFO - Batch 0 successfully written to PostgreSQL.
+[2025-02-02T20:41:03.867+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:41:04.840+0000] {consumer.py:120} INFO - Запись пакета 1 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00101000'), price_change_percent=Decimal('-3.23600000'), weighted_avg_price=Decimal('0.03068995'), prev_close_price=Decimal('0.03121000'), last_price=Decimal('0.03020000'), last_qty=Decimal('0.28100000'), bid_price=Decimal('0.03020000'), bid_qty=Decimal('20.92100000'), ask_price=Decimal('0.03021000'), ask_qty=Decimal('66.98140000'), open_price=Decimal('0.03121000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39549.99240000'), quote_volume=Decimal('1213.78744875'), close_time=datetime.datetime(2025, 2, 2, 20, 40, 58), first_id=485454818, last_id=485590079, count=135262, trend=False) в PostgreSQL.
+[2025-02-02T20:41:04.841+0000] {consumer.py:123} INFO - Writing batch 1 to PostgreSQL.
+[2025-02-02T20:41:04.889+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00101000'), price_change_percent=Decimal('-3.23600000'), weighted_avg_price=Decimal('0.03068995'), prev_close_price=Decimal('0.03121000'), last_price=Decimal('0.03020000'), last_qty=Decimal('0.28100000'), bid_price=Decimal('0.03020000'), bid_qty=Decimal('20.92100000'), ask_price=Decimal('0.03021000'), ask_qty=Decimal('66.98140000'), open_price=Decimal('0.03121000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39549.99240000'), quote_volume=Decimal('1213.78744875'), close_time=datetime.datetime(2025, 2, 2, 20, 40, 58), first_id=485454818, last_id=485590079, count=135262, trend=False) to PostgreSQL.
+[2025-02-02T20:41:05.870+0000] {consumer.py:126} INFO - Batch 1 successfully written to PostgreSQL.
+[2025-02-02T20:41:06.013+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:41:06.097+0000] {consumer.py:120} INFO - Запись пакета 2 с данными: Row(symbol='STRATBTC', price_change=Decimal('0E-8'), price_change_percent=Decimal('0E-8'), weighted_avg_price=Decimal('0E-8'), prev_close_price=Decimal('0E-8'), last_price=Decimal('0E-8'), last_qty=Decimal('0E-8'), bid_price=Decimal('0E-8'), bid_qty=Decimal('0E-8'), ask_price=Decimal('0E-8'), ask_qty=Decimal('0E-8'), open_price=Decimal('0E-8'), high_price=Decimal('0E-8'), low_price=Decimal('0E-8'), volume=Decimal('0E-8'), quote_volume=Decimal('0E-8'), close_time=datetime.datetime(2025, 1, 24, 9, 7, 51), first_id=-1, last_id=-1, count=0, trend=False) в PostgreSQL.
+[2025-02-02T20:41:06.098+0000] {consumer.py:123} INFO - Writing batch 2 to PostgreSQL.
+[2025-02-02T20:41:06.146+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='STRATBTC', price_change=Decimal('0E-8'), price_change_percent=Decimal('0E-8'), weighted_avg_price=Decimal('0E-8'), prev_close_price=Decimal('0E-8'), last_price=Decimal('0E-8'), last_qty=Decimal('0E-8'), bid_price=Decimal('0E-8'), bid_qty=Decimal('0E-8'), ask_price=Decimal('0E-8'), ask_qty=Decimal('0E-8'), open_price=Decimal('0E-8'), high_price=Decimal('0E-8'), low_price=Decimal('0E-8'), volume=Decimal('0E-8'), quote_volume=Decimal('0E-8'), close_time=datetime.datetime(2025, 1, 24, 9, 7, 51), first_id=-1, last_id=-1, count=0, trend=False) to PostgreSQL.
+[2025-02-02T20:41:07.101+0000] {consumer.py:126} INFO - Batch 2 successfully written to PostgreSQL.
+[2025-02-02T20:41:10.807+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:41:10.888+0000] {consumer.py:120} INFO - Запись пакета 3 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00101000'), price_change_percent=Decimal('-3.23600000'), weighted_avg_price=Decimal('0.03068992'), prev_close_price=Decimal('0.03121000'), last_price=Decimal('0.03020000'), last_qty=Decimal('0.28100000'), bid_price=Decimal('0.03020000'), bid_qty=Decimal('15.92000000'), ask_price=Decimal('0.03021000'), ask_qty=Decimal('61.92560000'), open_price=Decimal('0.03121000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39547.55940000'), quote_volume=Decimal('1213.71151488'), close_time=datetime.datetime(2025, 2, 2, 20, 41, 6), first_id=485454833, last_id=485590079, count=135247, trend=False) в PostgreSQL.
+[2025-02-02T20:41:10.889+0000] {consumer.py:123} INFO - Writing batch 3 to PostgreSQL.
+[2025-02-02T20:41:10.932+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00101000'), price_change_percent=Decimal('-3.23600000'), weighted_avg_price=Decimal('0.03068992'), prev_close_price=Decimal('0.03121000'), last_price=Decimal('0.03020000'), last_qty=Decimal('0.28100000'), bid_price=Decimal('0.03020000'), bid_qty=Decimal('15.92000000'), ask_price=Decimal('0.03021000'), ask_qty=Decimal('61.92560000'), open_price=Decimal('0.03121000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39547.55940000'), quote_volume=Decimal('1213.71151488'), close_time=datetime.datetime(2025, 2, 2, 20, 41, 6), first_id=485454833, last_id=485590079, count=135247, trend=False) to PostgreSQL.
+[2025-02-02T20:41:11.025+0000] {consumer.py:126} INFO - Batch 3 successfully written to PostgreSQL.
+[2025-02-02T20:41:11.142+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:41:11.209+0000] {consumer.py:120} INFO - Запись пакета 4 с данными: Row(symbol='STRATBTC', price_change=Decimal('0E-8'), price_change_percent=Decimal('0E-8'), weighted_avg_price=Decimal('0E-8'), prev_close_price=Decimal('0E-8'), last_price=Decimal('0E-8'), last_qty=Decimal('0E-8'), bid_price=Decimal('0E-8'), bid_qty=Decimal('0E-8'), ask_price=Decimal('0E-8'), ask_qty=Decimal('0E-8'), open_price=Decimal('0E-8'), high_price=Decimal('0E-8'), low_price=Decimal('0E-8'), volume=Decimal('0E-8'), quote_volume=Decimal('0E-8'), close_time=datetime.datetime(2025, 1, 24, 9, 26, 51), first_id=-1, last_id=-1, count=0, trend=False) в PostgreSQL.
+[2025-02-02T20:41:11.210+0000] {consumer.py:123} INFO - Writing batch 4 to PostgreSQL.
+[2025-02-02T20:41:11.245+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='STRATBTC', price_change=Decimal('0E-8'), price_change_percent=Decimal('0E-8'), weighted_avg_price=Decimal('0E-8'), prev_close_price=Decimal('0E-8'), last_price=Decimal('0E-8'), last_qty=Decimal('0E-8'), bid_price=Decimal('0E-8'), bid_qty=Decimal('0E-8'), ask_price=Decimal('0E-8'), ask_qty=Decimal('0E-8'), open_price=Decimal('0E-8'), high_price=Decimal('0E-8'), low_price=Decimal('0E-8'), volume=Decimal('0E-8'), quote_volume=Decimal('0E-8'), close_time=datetime.datetime(2025, 1, 24, 9, 26, 51), first_id=-1, last_id=-1, count=0, trend=False) to PostgreSQL.
+[2025-02-02T20:41:11.499+0000] {consumer.py:126} INFO - Batch 4 successfully written to PostgreSQL.
+[2025-02-02T20:41:11.604+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:41:11.668+0000] {consumer.py:120} INFO - Запись пакета 5 с данными: Row(symbol='BONKUSDT', price_change=Decimal('-0.00000231'), price_change_percent=Decimal('-10.51400000'), weighted_avg_price=Decimal('0.00002104'), prev_close_price=Decimal('0.00002198'), last_price=Decimal('0.00001966'), last_qty=Decimal('11657111.00000000'), bid_price=Decimal('0.00001965'), bid_qty=Decimal('520084649.00000000'), ask_price=Decimal('0.00001966'), ask_qty=Decimal('295463777.00000000'), open_price=Decimal('0.00002197'), high_price=Decimal('0.00002256'), low_price=Decimal('0.00001890'), volume=None, quote_volume=Decimal('57162479.94899825'), close_time=datetime.datetime(2025, 2, 2, 20, 41, 6), first_id=1533659255, last_id=1540883040, count=7223786, trend=False) в PostgreSQL.
+[2025-02-02T20:41:11.669+0000] {consumer.py:123} INFO - Writing batch 5 to PostgreSQL.
+[2025-02-02T20:41:11.700+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='BONKUSDT', price_change=Decimal('-0.00000231'), price_change_percent=Decimal('-10.51400000'), weighted_avg_price=Decimal('0.00002104'), prev_close_price=Decimal('0.00002198'), last_price=Decimal('0.00001966'), last_qty=Decimal('11657111.00000000'), bid_price=Decimal('0.00001965'), bid_qty=Decimal('520084649.00000000'), ask_price=Decimal('0.00001966'), ask_qty=Decimal('295463777.00000000'), open_price=Decimal('0.00002197'), high_price=Decimal('0.00002256'), low_price=Decimal('0.00001890'), volume=None, quote_volume=Decimal('57162479.94899825'), close_time=datetime.datetime(2025, 2, 2, 20, 41, 6), first_id=1533659255, last_id=1540883040, count=7223786, trend=False) to PostgreSQL.
+[2025-02-02T20:41:12.326+0000] {consumer.py:126} INFO - Batch 5 successfully written to PostgreSQL.
+[2025-02-02T20:41:21.377+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:41:21.440+0000] {consumer.py:120} INFO - Запись пакета 6 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00101000'), price_change_percent=Decimal('-3.23500000'), weighted_avg_price=Decimal('0.03068991'), prev_close_price=Decimal('0.03122000'), last_price=Decimal('0.03021000'), last_qty=Decimal('1.30310000'), bid_price=Decimal('0.03020000'), bid_qty=Decimal('31.74760000'), ask_price=Decimal('0.03021000'), ask_qty=Decimal('54.97720000'), open_price=Decimal('0.03122000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39548.80770000'), quote_volume=Decimal('1213.74917097'), close_time=datetime.datetime(2025, 2, 2, 20, 41, 13), first_id=485454846, last_id=485590081, count=135236, trend=False) в PostgreSQL.
+[2025-02-02T20:41:21.442+0000] {consumer.py:123} INFO - Writing batch 6 to PostgreSQL.
+[2025-02-02T20:41:21.474+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00101000'), price_change_percent=Decimal('-3.23500000'), weighted_avg_price=Decimal('0.03068991'), prev_close_price=Decimal('0.03122000'), last_price=Decimal('0.03021000'), last_qty=Decimal('1.30310000'), bid_price=Decimal('0.03020000'), bid_qty=Decimal('31.74760000'), ask_price=Decimal('0.03021000'), ask_qty=Decimal('54.97720000'), open_price=Decimal('0.03122000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39548.80770000'), quote_volume=Decimal('1213.74917097'), close_time=datetime.datetime(2025, 2, 2, 20, 41, 13), first_id=485454846, last_id=485590081, count=135236, trend=False) to PostgreSQL.
+[2025-02-02T20:41:21.596+0000] {consumer.py:126} INFO - Batch 6 successfully written to PostgreSQL.
+[2025-02-02T20:41:21.738+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:41:21.812+0000] {consumer.py:120} INFO - Запись пакета 7 с данными: Row(symbol='ETCETH', price_change=Decimal('-0.00012000'), price_change_percent=Decimal('-1.50900000'), weighted_avg_price=Decimal('0.00789240'), prev_close_price=Decimal('0.00795000'), last_price=Decimal('0.00783000'), last_qty=Decimal('1.06000000'), bid_price=Decimal('0.00782000'), bid_qty=Decimal('1.23000000'), ask_price=Decimal('0.00784000'), ask_qty=Decimal('5.86000000'), open_price=Decimal('0.00795000'), high_price=Decimal('0.00803000'), low_price=Decimal('0.00773000'), volume=Decimal('5907.80000000'), quote_volume=Decimal('46.62670110'), close_time=datetime.datetime(2025, 2, 2, 20, 35, 57), first_id=9090517, last_id=9093156, count=2640, trend=False) в PostgreSQL.
+[2025-02-02T20:41:21.813+0000] {consumer.py:123} INFO - Writing batch 7 to PostgreSQL.
+[2025-02-02T20:41:21.844+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETCETH', price_change=Decimal('-0.00012000'), price_change_percent=Decimal('-1.50900000'), weighted_avg_price=Decimal('0.00789240'), prev_close_price=Decimal('0.00795000'), last_price=Decimal('0.00783000'), last_qty=Decimal('1.06000000'), bid_price=Decimal('0.00782000'), bid_qty=Decimal('1.23000000'), ask_price=Decimal('0.00784000'), ask_qty=Decimal('5.86000000'), open_price=Decimal('0.00795000'), high_price=Decimal('0.00803000'), low_price=Decimal('0.00773000'), volume=Decimal('5907.80000000'), quote_volume=Decimal('46.62670110'), close_time=datetime.datetime(2025, 2, 2, 20, 35, 57), first_id=9090517, last_id=9093156, count=2640, trend=False) to PostgreSQL.
+[2025-02-02T20:41:22.558+0000] {consumer.py:126} INFO - Batch 7 successfully written to PostgreSQL.
+[2025-02-02T20:41:22.674+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:41:23.246+0000] {consumer.py:120} INFO - Запись пакета 8 с данными: Row(symbol='PENDLEUSDC', price_change=Decimal('-0.46400000'), price_change_percent=Decimal('-13.83800000'), weighted_avg_price=Decimal('3.10545424'), prev_close_price=Decimal('3.34700000'), last_price=Decimal('2.88900000'), last_qty=Decimal('90.00000000'), bid_price=Decimal('2.88900000'), bid_qty=Decimal('90.60000000'), ask_price=Decimal('2.89100000'), ask_qty=Decimal('43.80000000'), open_price=Decimal('3.35300000'), high_price=Decimal('3.40200000'), low_price=Decimal('2.75200000'), volume=Decimal('418253.80000000'), quote_volume=Decimal('1298868.03770000'), close_time=datetime.datetime(2025, 2, 2, 20, 41, 13), first_id=1730250, last_id=1743339, count=13090, trend=False) в PostgreSQL.
+[2025-02-02T20:41:23.247+0000] {consumer.py:123} INFO - Writing batch 8 to PostgreSQL.
+[2025-02-02T20:41:23.790+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='PENDLEUSDC', price_change=Decimal('-0.46400000'), price_change_percent=Decimal('-13.83800000'), weighted_avg_price=Decimal('3.10545424'), prev_close_price=Decimal('3.34700000'), last_price=Decimal('2.88900000'), last_qty=Decimal('90.00000000'), bid_price=Decimal('2.88900000'), bid_qty=Decimal('90.60000000'), ask_price=Decimal('2.89100000'), ask_qty=Decimal('43.80000000'), open_price=Decimal('3.35300000'), high_price=Decimal('3.40200000'), low_price=Decimal('2.75200000'), volume=Decimal('418253.80000000'), quote_volume=Decimal('1298868.03770000'), close_time=datetime.datetime(2025, 2, 2, 20, 41, 13), first_id=1730250, last_id=1743339, count=13090, trend=False) to PostgreSQL.
+[2025-02-02T20:41:24.387+0000] {consumer.py:126} INFO - Batch 8 successfully written to PostgreSQL.
+[2025-02-02T20:42:46.357+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-02-02T20:42:46.361+0000] {process_utils.py:132} INFO - Sending 15 to group 217. PIDs of all processes in the group: [219, 217]
+[2025-02-02T20:42:46.362+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 217
+[2025-02-02T20:42:46.365+0000] {taskinstance.py:3093} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-02-02T20:42:46.382+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/consumer.py", line 104, in spark_consumer
+    query.awaitTermination()
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/streaming/query.py", line 221, in awaitTermination
+    return self._jsq.awaitTermination()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1321, in __call__
+    answer = self.gateway_client.send_command(command)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/socket.py", line 718, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3095, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2025-02-02T20:42:46.398+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=spark_consumer_dag, task_id=spark_consumer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T204028, end_date=20250202T204246
+[2025-02-02T20:42:46.450+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:42:46.498+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=217, status='terminated', exitcode=2, started='20:40:28') (217) terminated with exit code 2
+[2025-02-02T20:42:46.954+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=219, status='terminated', started='20:40:28') (219) terminated with exit code None
+[2025-02-02T20:42:46.957+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 143
+[2025-02-02T20:42:46.989+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:44:31.249+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:44:31.261+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:44:31.267+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:44:31.268+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:44:31.278+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T20:44:31.281+0000] {standard_task_runner.py:72} INFO - Started process 201 to run task
+[2025-02-02T20:44:31.284+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'spark_consumer_dag', 'spark_consumer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/consumer.py', '--cfg-path', '/tmp/tmpj69_dyod']
+[2025-02-02T20:44:31.286+0000] {standard_task_runner.py:105} INFO - Job 3: Subtask spark_consumer
+[2025-02-02T20:44:31.322+0000] {task_command.py:467} INFO - Running <TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 12998e952c77
+[2025-02-02T20:44:31.382+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='spark_consumer_dag' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T20:44:31.383+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:44:56.165+0000] {consumer.py:94} INFO - df_parsed является потоком
+[2025-02-02T20:44:56.188+0000] {java_gateway.py:2273} INFO - Callback Server Starting
+[2025-02-02T20:44:56.190+0000] {java_gateway.py:2275} INFO - Socket listening on ('127.0.0.1', 35565)
+[2025-02-02T20:44:58.413+0000] {clientserver.py:561} INFO - Python Server ready to receive messages
+[2025-02-02T20:44:58.414+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:44:58.450+0000] {consumer.py:118} INFO - Batch 0 пустой.
+[2025-02-02T20:44:58.451+0000] {consumer.py:123} INFO - Writing batch 0 to PostgreSQL.
+[2025-02-02T20:44:58.543+0000] {consumer.py:124} INFO - Writing batch with data: None to PostgreSQL.
+[2025-02-02T20:44:58.818+0000] {consumer.py:126} INFO - Batch 0 successfully written to PostgreSQL.
+[2025-02-02T20:45:16.661+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:17.891+0000] {consumer.py:120} INFO - Запись пакета 1 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00108000'), price_change_percent=Decimal('-3.45200000'), weighted_avg_price=Decimal('0.03068712'), prev_close_price=Decimal('0.03128000'), last_price=Decimal('0.03021000'), last_qty=Decimal('2.80020000'), bid_price=Decimal('0.03020000'), bid_qty=Decimal('44.47260000'), ask_price=Decimal('0.03021000'), ask_qty=Decimal('18.21930000'), open_price=Decimal('0.03129000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39511.59060000'), quote_volume=Decimal('1212.49682535'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 9), first_id=485455403, last_id=485590367, count=134965, trend=False) в PostgreSQL.
+[2025-02-02T20:45:17.892+0000] {consumer.py:123} INFO - Writing batch 1 to PostgreSQL.
+[2025-02-02T20:45:17.957+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00108000'), price_change_percent=Decimal('-3.45200000'), weighted_avg_price=Decimal('0.03068712'), prev_close_price=Decimal('0.03128000'), last_price=Decimal('0.03021000'), last_qty=Decimal('2.80020000'), bid_price=Decimal('0.03020000'), bid_qty=Decimal('44.47260000'), ask_price=Decimal('0.03021000'), ask_qty=Decimal('18.21930000'), open_price=Decimal('0.03129000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39511.59060000'), quote_volume=Decimal('1212.49682535'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 9), first_id=485455403, last_id=485590367, count=134965, trend=False) to PostgreSQL.
+[2025-02-02T20:45:19.065+0000] {consumer.py:126} INFO - Batch 1 successfully written to PostgreSQL.
+[2025-02-02T20:45:19.266+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:19.425+0000] {consumer.py:120} INFO - Запись пакета 2 с данными: Row(symbol='STRATBTC', price_change=Decimal('0E-8'), price_change_percent=Decimal('0E-8'), weighted_avg_price=Decimal('0E-8'), prev_close_price=Decimal('0E-8'), last_price=Decimal('0E-8'), last_qty=Decimal('0E-8'), bid_price=Decimal('0E-8'), bid_qty=Decimal('0E-8'), ask_price=Decimal('0E-8'), ask_qty=Decimal('0E-8'), open_price=Decimal('0E-8'), high_price=Decimal('0E-8'), low_price=Decimal('0E-8'), volume=Decimal('0E-8'), quote_volume=Decimal('0E-8'), close_time=datetime.datetime(2025, 1, 24, 9, 22, 10), first_id=-1, last_id=-1, count=0, trend=False) в PostgreSQL.
+[2025-02-02T20:45:19.427+0000] {consumer.py:123} INFO - Writing batch 2 to PostgreSQL.
+[2025-02-02T20:45:19.504+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='STRATBTC', price_change=Decimal('0E-8'), price_change_percent=Decimal('0E-8'), weighted_avg_price=Decimal('0E-8'), prev_close_price=Decimal('0E-8'), last_price=Decimal('0E-8'), last_qty=Decimal('0E-8'), bid_price=Decimal('0E-8'), bid_qty=Decimal('0E-8'), ask_price=Decimal('0E-8'), ask_qty=Decimal('0E-8'), open_price=Decimal('0E-8'), high_price=Decimal('0E-8'), low_price=Decimal('0E-8'), volume=Decimal('0E-8'), quote_volume=Decimal('0E-8'), close_time=datetime.datetime(2025, 1, 24, 9, 22, 10), first_id=-1, last_id=-1, count=0, trend=False) to PostgreSQL.
+[2025-02-02T20:45:20.618+0000] {consumer.py:126} INFO - Batch 2 successfully written to PostgreSQL.
+[2025-02-02T20:45:23.595+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:23.709+0000] {consumer.py:120} INFO - Запись пакета 3 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00109000'), price_change_percent=Decimal('-3.48500000'), weighted_avg_price=Decimal('0.03068695'), prev_close_price=Decimal('0.03128000'), last_price=Decimal('0.03019000'), last_qty=Decimal('0.42830000'), bid_price=Decimal('0.03019000'), bid_qty=Decimal('4.24760000'), ask_price=Decimal('0.03020000'), ask_qty=Decimal('43.37240000'), open_price=Decimal('0.03128000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39516.18030000'), quote_volume=Decimal('1212.63097265'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 19), first_id=485455473, last_id=485590381, count=134909, trend=False) в PostgreSQL.
+[2025-02-02T20:45:23.711+0000] {consumer.py:123} INFO - Writing batch 3 to PostgreSQL.
+[2025-02-02T20:45:23.757+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00109000'), price_change_percent=Decimal('-3.48500000'), weighted_avg_price=Decimal('0.03068695'), prev_close_price=Decimal('0.03128000'), last_price=Decimal('0.03019000'), last_qty=Decimal('0.42830000'), bid_price=Decimal('0.03019000'), bid_qty=Decimal('4.24760000'), ask_price=Decimal('0.03020000'), ask_qty=Decimal('43.37240000'), open_price=Decimal('0.03128000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39516.18030000'), quote_volume=Decimal('1212.63097265'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 19), first_id=485455473, last_id=485590381, count=134909, trend=False) to PostgreSQL.
+[2025-02-02T20:45:23.856+0000] {consumer.py:126} INFO - Batch 3 successfully written to PostgreSQL.
+[2025-02-02T20:45:23.975+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:24.044+0000] {consumer.py:120} INFO - Запись пакета 4 с данными: Row(symbol='ETCETH', price_change=Decimal('-0.00012000'), price_change_percent=Decimal('-1.51100000'), weighted_avg_price=Decimal('0.00789229'), prev_close_price=Decimal('0.00794000'), last_price=Decimal('0.00782000'), last_qty=Decimal('0.17000000'), bid_price=Decimal('0.00781000'), bid_qty=Decimal('1.39000000'), ask_price=Decimal('0.00783000'), ask_qty=Decimal('131.88000000'), open_price=Decimal('0.00794000'), high_price=Decimal('0.00803000'), low_price=Decimal('0.00773000'), volume=Decimal('5895.18000000'), quote_volume=Decimal('46.52645850'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 18), first_id=9090526, last_id=9093157, count=2632, trend=False) в PostgreSQL.
+[2025-02-02T20:45:24.045+0000] {consumer.py:123} INFO - Writing batch 4 to PostgreSQL.
+[2025-02-02T20:45:24.090+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETCETH', price_change=Decimal('-0.00012000'), price_change_percent=Decimal('-1.51100000'), weighted_avg_price=Decimal('0.00789229'), prev_close_price=Decimal('0.00794000'), last_price=Decimal('0.00782000'), last_qty=Decimal('0.17000000'), bid_price=Decimal('0.00781000'), bid_qty=Decimal('1.39000000'), ask_price=Decimal('0.00783000'), ask_qty=Decimal('131.88000000'), open_price=Decimal('0.00794000'), high_price=Decimal('0.00803000'), low_price=Decimal('0.00773000'), volume=Decimal('5895.18000000'), quote_volume=Decimal('46.52645850'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 18), first_id=9090526, last_id=9093157, count=2632, trend=False) to PostgreSQL.
+[2025-02-02T20:45:24.936+0000] {consumer.py:126} INFO - Batch 4 successfully written to PostgreSQL.
+[2025-02-02T20:45:29.722+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:29.789+0000] {consumer.py:120} INFO - Запись пакета 5 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00109000'), price_change_percent=Decimal('-3.48500000'), weighted_avg_price=Decimal('0.03068690'), prev_close_price=Decimal('0.03128000'), last_price=Decimal('0.03019000'), last_qty=Decimal('3.91040000'), bid_price=Decimal('0.03019000'), bid_qty=Decimal('45.69990000'), ask_price=Decimal('0.03020000'), ask_qty=Decimal('20.30470000'), open_price=Decimal('0.03128000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39519.64480000'), quote_volume=Decimal('1212.73554666'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 25), first_id=485455474, last_id=485590396, count=134923, trend=False) в PostgreSQL.
+[2025-02-02T20:45:29.790+0000] {consumer.py:123} INFO - Writing batch 5 to PostgreSQL.
+[2025-02-02T20:45:29.823+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00109000'), price_change_percent=Decimal('-3.48500000'), weighted_avg_price=Decimal('0.03068690'), prev_close_price=Decimal('0.03128000'), last_price=Decimal('0.03019000'), last_qty=Decimal('3.91040000'), bid_price=Decimal('0.03019000'), bid_qty=Decimal('45.69990000'), ask_price=Decimal('0.03020000'), ask_qty=Decimal('20.30470000'), open_price=Decimal('0.03128000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39519.64480000'), quote_volume=Decimal('1212.73554666'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 25), first_id=485455474, last_id=485590396, count=134923, trend=False) to PostgreSQL.
+[2025-02-02T20:45:29.908+0000] {consumer.py:126} INFO - Batch 5 successfully written to PostgreSQL.
+[2025-02-02T20:45:30.021+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:30.088+0000] {consumer.py:120} INFO - Запись пакета 6 с данными: Row(symbol='ETCETH', price_change=Decimal('-0.00012000'), price_change_percent=Decimal('-1.51100000'), weighted_avg_price=Decimal('0.00789229'), prev_close_price=Decimal('0.00794000'), last_price=Decimal('0.00782000'), last_qty=Decimal('0.17000000'), bid_price=Decimal('0.00781000'), bid_qty=Decimal('1.39000000'), ask_price=Decimal('0.00783000'), ask_qty=Decimal('131.88000000'), open_price=Decimal('0.00794000'), high_price=Decimal('0.00803000'), low_price=Decimal('0.00773000'), volume=Decimal('5895.18000000'), quote_volume=Decimal('46.52645850'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 18), first_id=9090526, last_id=9093157, count=2632, trend=False) в PostgreSQL.
+[2025-02-02T20:45:30.089+0000] {consumer.py:123} INFO - Writing batch 6 to PostgreSQL.
+[2025-02-02T20:45:30.119+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETCETH', price_change=Decimal('-0.00012000'), price_change_percent=Decimal('-1.51100000'), weighted_avg_price=Decimal('0.00789229'), prev_close_price=Decimal('0.00794000'), last_price=Decimal('0.00782000'), last_qty=Decimal('0.17000000'), bid_price=Decimal('0.00781000'), bid_qty=Decimal('1.39000000'), ask_price=Decimal('0.00783000'), ask_qty=Decimal('131.88000000'), open_price=Decimal('0.00794000'), high_price=Decimal('0.00803000'), low_price=Decimal('0.00773000'), volume=Decimal('5895.18000000'), quote_volume=Decimal('46.52645850'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 18), first_id=9090526, last_id=9093157, count=2632, trend=False) to PostgreSQL.
+[2025-02-02T20:45:30.798+0000] {consumer.py:126} INFO - Batch 6 successfully written to PostgreSQL.
+[2025-02-02T20:45:30.900+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:31.460+0000] {consumer.py:120} INFO - Запись пакета 7 с данными: Row(symbol='CFXUSDC', price_change=Decimal('-0.01350000'), price_change_percent=Decimal('-9.16500000'), weighted_avg_price=Decimal('0.14154568'), prev_close_price=Decimal('0.14690000'), last_price=Decimal('0.13380000'), last_qty=Decimal('7473.00000000'), bid_price=Decimal('0.13350000'), bid_qty=Decimal('1872.00000000'), ask_price=Decimal('0.13370000'), ask_qty=Decimal('11317.00000000'), open_price=Decimal('0.14730000'), high_price=Decimal('0.15010000'), low_price=Decimal('0.13050000'), volume=Decimal('1247622.00000000'), quote_volume=Decimal('176595.50800000'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 24), first_id=603330, last_id=604504, count=1175, trend=False) в PostgreSQL.
+[2025-02-02T20:45:31.461+0000] {consumer.py:123} INFO - Writing batch 7 to PostgreSQL.
+[2025-02-02T20:45:31.993+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='CFXUSDC', price_change=Decimal('-0.01350000'), price_change_percent=Decimal('-9.16500000'), weighted_avg_price=Decimal('0.14154568'), prev_close_price=Decimal('0.14690000'), last_price=Decimal('0.13380000'), last_qty=Decimal('7473.00000000'), bid_price=Decimal('0.13350000'), bid_qty=Decimal('1872.00000000'), ask_price=Decimal('0.13370000'), ask_qty=Decimal('11317.00000000'), open_price=Decimal('0.14730000'), high_price=Decimal('0.15010000'), low_price=Decimal('0.13050000'), volume=Decimal('1247622.00000000'), quote_volume=Decimal('176595.50800000'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 24), first_id=603330, last_id=604504, count=1175, trend=False) to PostgreSQL.
+[2025-02-02T20:45:32.584+0000] {consumer.py:126} INFO - Batch 7 successfully written to PostgreSQL.
+[2025-02-02T20:45:36.651+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:36.712+0000] {consumer.py:120} INFO - Запись пакета 8 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00106000'), price_change_percent=Decimal('-3.39100000'), weighted_avg_price=Decimal('0.03068658'), prev_close_price=Decimal('0.03127000'), last_price=Decimal('0.03020000'), last_qty=Decimal('0.05290000'), bid_price=Decimal('0.03019000'), bid_qty=Decimal('31.68610000'), ask_price=Decimal('0.03020000'), ask_qty=Decimal('33.79980000'), open_price=Decimal('0.03126000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39497.85660000'), quote_volume=Decimal('1212.05400992'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 32), first_id=485455497, last_id=485590399, count=134903, trend=False) в PostgreSQL.
+[2025-02-02T20:45:36.713+0000] {consumer.py:123} INFO - Writing batch 8 to PostgreSQL.
+[2025-02-02T20:45:36.743+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00106000'), price_change_percent=Decimal('-3.39100000'), weighted_avg_price=Decimal('0.03068658'), prev_close_price=Decimal('0.03127000'), last_price=Decimal('0.03020000'), last_qty=Decimal('0.05290000'), bid_price=Decimal('0.03019000'), bid_qty=Decimal('31.68610000'), ask_price=Decimal('0.03020000'), ask_qty=Decimal('33.79980000'), open_price=Decimal('0.03126000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39497.85660000'), quote_volume=Decimal('1212.05400992'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 32), first_id=485455497, last_id=485590399, count=134903, trend=False) to PostgreSQL.
+[2025-02-02T20:45:36.822+0000] {consumer.py:126} INFO - Batch 8 successfully written to PostgreSQL.
+[2025-02-02T20:45:36.952+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:37.022+0000] {consumer.py:120} INFO - Запись пакета 9 с данными: Row(symbol='STRATBTC', price_change=Decimal('0E-8'), price_change_percent=Decimal('0E-8'), weighted_avg_price=Decimal('0E-8'), prev_close_price=Decimal('0E-8'), last_price=Decimal('0E-8'), last_qty=Decimal('0E-8'), bid_price=Decimal('0E-8'), bid_qty=Decimal('0E-8'), ask_price=Decimal('0E-8'), ask_qty=Decimal('0E-8'), open_price=Decimal('0E-8'), high_price=Decimal('0E-8'), low_price=Decimal('0E-8'), volume=Decimal('0E-8'), quote_volume=Decimal('0E-8'), close_time=datetime.datetime(2025, 1, 24, 9, 40, 14), first_id=-1, last_id=-1, count=0, trend=False) в PostgreSQL.
+[2025-02-02T20:45:37.024+0000] {consumer.py:123} INFO - Writing batch 9 to PostgreSQL.
+[2025-02-02T20:45:37.058+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='STRATBTC', price_change=Decimal('0E-8'), price_change_percent=Decimal('0E-8'), weighted_avg_price=Decimal('0E-8'), prev_close_price=Decimal('0E-8'), last_price=Decimal('0E-8'), last_qty=Decimal('0E-8'), bid_price=Decimal('0E-8'), bid_qty=Decimal('0E-8'), ask_price=Decimal('0E-8'), ask_qty=Decimal('0E-8'), open_price=Decimal('0E-8'), high_price=Decimal('0E-8'), low_price=Decimal('0E-8'), volume=Decimal('0E-8'), quote_volume=Decimal('0E-8'), close_time=datetime.datetime(2025, 1, 24, 9, 40, 14), first_id=-1, last_id=-1, count=0, trend=False) to PostgreSQL.
+[2025-02-02T20:45:37.743+0000] {consumer.py:126} INFO - Batch 9 successfully written to PostgreSQL.
+[2025-02-02T20:45:42.658+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:42.723+0000] {consumer.py:120} INFO - Запись пакета 10 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00104000'), price_change_percent=Decimal('-3.32900000'), weighted_avg_price=Decimal('0.03068624'), prev_close_price=Decimal('0.03123000'), last_price=Decimal('0.03020000'), last_qty=Decimal('0.05290000'), bid_price=Decimal('0.03019000'), bid_qty=Decimal('14.27850000'), ask_price=Decimal('0.03020000'), ask_qty=Decimal('44.69870000'), open_price=Decimal('0.03124000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39473.98260000'), quote_volume=Decimal('1211.30800367'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 38), first_id=485455598, last_id=485590399, count=134802, trend=False) в PostgreSQL.
+[2025-02-02T20:45:42.724+0000] {consumer.py:123} INFO - Writing batch 10 to PostgreSQL.
+[2025-02-02T20:45:42.755+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00104000'), price_change_percent=Decimal('-3.32900000'), weighted_avg_price=Decimal('0.03068624'), prev_close_price=Decimal('0.03123000'), last_price=Decimal('0.03020000'), last_qty=Decimal('0.05290000'), bid_price=Decimal('0.03019000'), bid_qty=Decimal('14.27850000'), ask_price=Decimal('0.03020000'), ask_qty=Decimal('44.69870000'), open_price=Decimal('0.03124000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39473.98260000'), quote_volume=Decimal('1211.30800367'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 38), first_id=485455598, last_id=485590399, count=134802, trend=False) to PostgreSQL.
+[2025-02-02T20:45:42.864+0000] {consumer.py:126} INFO - Batch 10 successfully written to PostgreSQL.
+[2025-02-02T20:45:42.976+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:43.040+0000] {consumer.py:120} INFO - Запись пакета 11 с данными: Row(symbol='ETCETH', price_change=Decimal('-0.00012000'), price_change_percent=Decimal('-1.51100000'), weighted_avg_price=Decimal('0.00789229'), prev_close_price=Decimal('0.00794000'), last_price=Decimal('0.00782000'), last_qty=Decimal('0.17000000'), bid_price=Decimal('0.00781000'), bid_qty=Decimal('1.39000000'), ask_price=Decimal('0.00783000'), ask_qty=Decimal('131.88000000'), open_price=Decimal('0.00794000'), high_price=Decimal('0.00803000'), low_price=Decimal('0.00773000'), volume=Decimal('5895.18000000'), quote_volume=Decimal('46.52645850'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 18), first_id=9090526, last_id=9093157, count=2632, trend=False) в PostgreSQL.
+[2025-02-02T20:45:43.041+0000] {consumer.py:123} INFO - Writing batch 11 to PostgreSQL.
+[2025-02-02T20:45:43.070+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETCETH', price_change=Decimal('-0.00012000'), price_change_percent=Decimal('-1.51100000'), weighted_avg_price=Decimal('0.00789229'), prev_close_price=Decimal('0.00794000'), last_price=Decimal('0.00782000'), last_qty=Decimal('0.17000000'), bid_price=Decimal('0.00781000'), bid_qty=Decimal('1.39000000'), ask_price=Decimal('0.00783000'), ask_qty=Decimal('131.88000000'), open_price=Decimal('0.00794000'), high_price=Decimal('0.00803000'), low_price=Decimal('0.00773000'), volume=Decimal('5895.18000000'), quote_volume=Decimal('46.52645850'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 18), first_id=9090526, last_id=9093157, count=2632, trend=False) to PostgreSQL.
+[2025-02-02T20:45:43.747+0000] {consumer.py:126} INFO - Batch 11 successfully written to PostgreSQL.
+[2025-02-02T20:45:43.846+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:44.400+0000] {consumer.py:120} INFO - Запись пакета 12 с данными: Row(symbol='EURUSDC', price_change=Decimal('-0.00700000'), price_change_percent=Decimal('-0.67700000'), weighted_avg_price=Decimal('1.03047554'), prev_close_price=Decimal('1.03360000'), last_price=Decimal('1.02640000'), last_qty=Decimal('1107.00000000'), bid_price=Decimal('1.02640000'), bid_qty=Decimal('1850.30000000'), ask_price=Decimal('1.02670000'), ask_qty=Decimal('17560.00000000'), open_price=Decimal('1.03340000'), high_price=Decimal('1.03370000'), low_price=Decimal('1.02320000'), volume=Decimal('10814356.50000000'), quote_volume=Decimal('11143929.85097000'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 36), first_id=4239102, last_id=4262593, count=23492, trend=False) в PostgreSQL.
+[2025-02-02T20:45:44.401+0000] {consumer.py:123} INFO - Writing batch 12 to PostgreSQL.
+[2025-02-02T20:45:44.928+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='EURUSDC', price_change=Decimal('-0.00700000'), price_change_percent=Decimal('-0.67700000'), weighted_avg_price=Decimal('1.03047554'), prev_close_price=Decimal('1.03360000'), last_price=Decimal('1.02640000'), last_qty=Decimal('1107.00000000'), bid_price=Decimal('1.02640000'), bid_qty=Decimal('1850.30000000'), ask_price=Decimal('1.02670000'), ask_qty=Decimal('17560.00000000'), open_price=Decimal('1.03340000'), high_price=Decimal('1.03370000'), low_price=Decimal('1.02320000'), volume=Decimal('10814356.50000000'), quote_volume=Decimal('11143929.85097000'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 36), first_id=4239102, last_id=4262593, count=23492, trend=False) to PostgreSQL.
+[2025-02-02T20:45:45.511+0000] {consumer.py:126} INFO - Batch 12 successfully written to PostgreSQL.
+[2025-02-02T20:45:51.782+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:51.842+0000] {consumer.py:120} INFO - Запись пакета 13 с данными: Row(symbol='ETHBTC', price_change=Decimal('-0.00107000'), price_change_percent=Decimal('-3.42400000'), weighted_avg_price=Decimal('0.03068620'), prev_close_price=Decimal('0.03125000'), last_price=Decimal('0.03018000'), last_qty=Decimal('0.27100000'), bid_price=Decimal('0.03017000'), bid_qty=Decimal('38.22400000'), ask_price=Decimal('0.03018000'), ask_qty=Decimal('18.15860000'), open_price=Decimal('0.03125000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39471.84360000'), quote_volume=Decimal('1211.24086714'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 45), first_id=485455609, last_id=485590414, count=134806, trend=False) в PostgreSQL.
+[2025-02-02T20:45:51.844+0000] {consumer.py:123} INFO - Writing batch 13 to PostgreSQL.
+[2025-02-02T20:45:51.891+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETHBTC', price_change=Decimal('-0.00107000'), price_change_percent=Decimal('-3.42400000'), weighted_avg_price=Decimal('0.03068620'), prev_close_price=Decimal('0.03125000'), last_price=Decimal('0.03018000'), last_qty=Decimal('0.27100000'), bid_price=Decimal('0.03017000'), bid_qty=Decimal('38.22400000'), ask_price=Decimal('0.03018000'), ask_qty=Decimal('18.15860000'), open_price=Decimal('0.03125000'), high_price=Decimal('0.03134000'), low_price=Decimal('0.02980600'), volume=Decimal('39471.84360000'), quote_volume=Decimal('1211.24086714'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 45), first_id=485455609, last_id=485590414, count=134806, trend=False) to PostgreSQL.
+[2025-02-02T20:45:51.983+0000] {consumer.py:126} INFO - Batch 13 successfully written to PostgreSQL.
+[2025-02-02T20:45:52.094+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:52.149+0000] {consumer.py:120} INFO - Запись пакета 14 с данными: Row(symbol='ETCETH', price_change=Decimal('-0.00012000'), price_change_percent=Decimal('-1.51100000'), weighted_avg_price=Decimal('0.00789229'), prev_close_price=Decimal('0.00794000'), last_price=Decimal('0.00782000'), last_qty=Decimal('0.17000000'), bid_price=Decimal('0.00781000'), bid_qty=Decimal('1.39000000'), ask_price=Decimal('0.00783000'), ask_qty=Decimal('131.88000000'), open_price=Decimal('0.00794000'), high_price=Decimal('0.00803000'), low_price=Decimal('0.00773000'), volume=Decimal('5895.18000000'), quote_volume=Decimal('46.52645850'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 18), first_id=9090526, last_id=9093157, count=2632, trend=False) в PostgreSQL.
+[2025-02-02T20:45:52.150+0000] {consumer.py:123} INFO - Writing batch 14 to PostgreSQL.
+[2025-02-02T20:45:52.179+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='ETCETH', price_change=Decimal('-0.00012000'), price_change_percent=Decimal('-1.51100000'), weighted_avg_price=Decimal('0.00789229'), prev_close_price=Decimal('0.00794000'), last_price=Decimal('0.00782000'), last_qty=Decimal('0.17000000'), bid_price=Decimal('0.00781000'), bid_qty=Decimal('1.39000000'), ask_price=Decimal('0.00783000'), ask_qty=Decimal('131.88000000'), open_price=Decimal('0.00794000'), high_price=Decimal('0.00803000'), low_price=Decimal('0.00773000'), volume=Decimal('5895.18000000'), quote_volume=Decimal('46.52645850'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 18), first_id=9090526, last_id=9093157, count=2632, trend=False) to PostgreSQL.
+[2025-02-02T20:45:52.318+0000] {consumer.py:126} INFO - Batch 14 successfully written to PostgreSQL.
+[2025-02-02T20:45:52.422+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-02T20:45:52.477+0000] {consumer.py:120} INFO - Запись пакета 15 с данными: Row(symbol='COMBOTRY', price_change=Decimal('-1.52000000'), price_change_percent=Decimal('-13.36900000'), weighted_avg_price=Decimal('10.43806004'), prev_close_price=Decimal('11.41000000'), last_price=Decimal('9.85000000'), last_qty=Decimal('675.00000000'), bid_price=Decimal('9.83000000'), bid_qty=Decimal('1397.10000000'), ask_price=Decimal('9.84000000'), ask_qty=Decimal('759.30000000'), open_price=Decimal('11.37000000'), high_price=Decimal('11.41000000'), low_price=Decimal('9.47000000'), volume=Decimal('1358838.20000000'), quote_volume=Decimal('14183634.72200000'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 45), first_id=2974620, last_id=2978369, count=3750, trend=False) в PostgreSQL.
+[2025-02-02T20:45:52.478+0000] {consumer.py:123} INFO - Writing batch 15 to PostgreSQL.
+[2025-02-02T20:45:52.511+0000] {consumer.py:124} INFO - Writing batch with data: Row(symbol='COMBOTRY', price_change=Decimal('-1.52000000'), price_change_percent=Decimal('-13.36900000'), weighted_avg_price=Decimal('10.43806004'), prev_close_price=Decimal('11.41000000'), last_price=Decimal('9.85000000'), last_qty=Decimal('675.00000000'), bid_price=Decimal('9.83000000'), bid_qty=Decimal('1397.10000000'), ask_price=Decimal('9.84000000'), ask_qty=Decimal('759.30000000'), open_price=Decimal('11.37000000'), high_price=Decimal('11.41000000'), low_price=Decimal('9.47000000'), volume=Decimal('1358838.20000000'), quote_volume=Decimal('14183634.72200000'), close_time=datetime.datetime(2025, 2, 2, 20, 45, 45), first_id=2974620, last_id=2978369, count=3750, trend=False) to PostgreSQL.
+[2025-02-02T20:45:53.127+0000] {consumer.py:126} INFO - Batch 15 successfully written to PostgreSQL.
+[2025-02-02T20:48:28.284+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-02-02T20:48:28.288+0000] {process_utils.py:132} INFO - Sending 15 to group 201. PIDs of all processes in the group: [203, 201]
+[2025-02-02T20:48:28.290+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 201
+[2025-02-02T20:48:28.291+0000] {taskinstance.py:3093} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-02-02T20:48:28.303+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/consumer.py", line 104, in spark_consumer
+    query.awaitTermination()
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/streaming/query.py", line 221, in awaitTermination
+    return self._jsq.awaitTermination()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1321, in __call__
+    answer = self.gateway_client.send_command(command)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/socket.py", line 718, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3095, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2025-02-02T20:48:28.315+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=spark_consumer_dag, task_id=spark_consumer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T204431, end_date=20250202T204828
+[2025-02-02T20:48:28.400+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:48:28.799+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=201, status='terminated', exitcode=2, started='20:44:31') (201) terminated with exit code 2
+[2025-02-02T20:48:29.053+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=203, status='terminated', started='20:44:31') (203) terminated with exit code None
+[2025-02-02T20:48:29.063+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 143
+[2025-02-02T20:48:29.126+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:48:29.182+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

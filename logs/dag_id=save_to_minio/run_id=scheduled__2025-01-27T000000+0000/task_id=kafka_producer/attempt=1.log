@@ -1,0 +1,696 @@
+[2025-02-02T13:22:45.648+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:22:45.667+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T13:22:45.677+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T13:22:45.678+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T13:22:45.773+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T13:22:45.780+0000] {standard_task_runner.py:72} INFO - Started process 297 to run task
+[2025-02-02T13:22:45.785+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpl_yyy56l']
+[2025-02-02T13:22:45.790+0000] {standard_task_runner.py:105} INFO - Job 13: Subtask kafka_producer
+[2025-02-02T13:22:45.842+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host e6ed12b0dfa5
+[2025-02-02T13:22:45.935+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T13:22:45.938+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:22:45.973+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T13:22:45.976+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T13:22:47.229+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.2', 9093)]>: connecting to kafka:9093 [('172.18.0.2', 9093) IPv4]
+[2025-02-02T13:22:47.294+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T13:22:47.465+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.2', 9093)]>: Connection complete.
+[2025-02-02T13:22:47.682+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T13:22:47.689+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T13:22:47.699+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T13:22:47.758+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.2', 9093)]>: connecting to kafka:9093 [('172.18.0.2', 9093) IPv4]
+[2025-02-02T13:22:47.763+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.2', 9093)]>: Connection complete.
+[2025-02-02T13:22:47.773+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.2', 9093)]>: Closing connection. 
+[2025-02-02T13:22:48.555+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.2', 9093)]>: Closing connection. 
+[2025-02-02T13:22:48.565+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T13:22:48.581+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:22:48.582+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T132245, end_date=20250202T132248
+[2025-02-02T13:22:48.640+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T13:22:48.661+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:22:48.663+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:36:33.977+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:36:33.990+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T13:36:33.996+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T13:36:33.997+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T13:36:34.006+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T13:36:34.010+0000] {standard_task_runner.py:72} INFO - Started process 207 to run task
+[2025-02-02T13:36:34.012+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpyjrg7ulx']
+[2025-02-02T13:36:34.014+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T13:36:34.049+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 64f2a5764477
+[2025-02-02T13:36:34.107+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T13:36:34.108+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:36:34.125+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T13:36:34.127+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T13:36:34.358+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T13:36:34.359+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T13:36:34.360+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T13:36:34.471+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T13:36:34.473+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T13:36:34.475+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T13:36:34.499+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T13:36:34.502+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T13:36:34.505+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T13:36:34.845+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T13:36:34.849+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T13:36:34.856+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:36:34.858+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T133633, end_date=20250202T133634
+[2025-02-02T13:36:34.905+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T13:36:34.921+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:36:34.924+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:42:37.198+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:42:37.210+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T13:42:37.216+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T13:42:37.217+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T13:42:37.225+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T13:42:37.229+0000] {standard_task_runner.py:72} INFO - Started process 206 to run task
+[2025-02-02T13:42:37.231+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpnwktvamd']
+[2025-02-02T13:42:37.233+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T13:42:37.265+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 94cf105fca6e
+[2025-02-02T13:42:37.322+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T13:42:37.323+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:42:37.340+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T13:42:37.342+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T13:42:37.556+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T13:42:37.557+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T13:42:37.558+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T13:42:37.661+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T13:42:37.662+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T13:42:37.665+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T13:42:37.680+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T13:42:37.682+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T13:42:37.685+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T13:42:38.023+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T13:42:38.026+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T13:42:38.033+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:42:38.034+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T134237, end_date=20250202T134238
+[2025-02-02T13:42:38.086+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T13:42:38.102+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:42:38.105+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:46:24.514+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:46:24.526+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T13:46:24.532+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T13:46:24.533+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T13:46:24.541+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T13:46:24.545+0000] {standard_task_runner.py:72} INFO - Started process 206 to run task
+[2025-02-02T13:46:24.547+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpc_57_k8c']
+[2025-02-02T13:46:24.549+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T13:46:24.582+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 774492c58bf0
+[2025-02-02T13:46:24.634+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T13:46:24.635+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:46:24.651+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T13:46:24.652+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T13:46:24.862+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T13:46:24.863+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T13:46:24.864+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T13:46:24.968+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T13:46:24.969+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T13:46:24.972+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T13:46:24.988+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T13:46:25.004+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T13:46:25.008+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T13:46:25.322+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T13:46:25.325+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T13:46:25.332+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:46:25.333+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T134624, end_date=20250202T134625
+[2025-02-02T13:46:25.362+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T13:46:25.376+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:46:25.378+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T13:58:05.977+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T13:58:05.990+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T13:58:05.996+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T13:58:05.997+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T13:58:06.006+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T13:58:06.010+0000] {standard_task_runner.py:72} INFO - Started process 201 to run task
+[2025-02-02T13:58:06.012+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp0c8kov7q']
+[2025-02-02T13:58:06.015+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T13:58:06.048+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host f0b94dd433bd
+[2025-02-02T13:58:06.103+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T13:58:06.104+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T13:58:06.120+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T13:58:06.121+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T13:58:06.346+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T13:58:06.348+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T13:58:06.349+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T13:58:06.453+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T13:58:06.454+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T13:58:06.456+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T13:58:06.472+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T13:58:06.486+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T13:58:06.489+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T13:58:06.826+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T13:58:06.829+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T13:58:06.836+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T13:58:06.837+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T135805, end_date=20250202T135806
+[2025-02-02T13:58:06.868+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T13:58:06.884+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T13:58:06.886+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T14:04:01.920+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T14:04:01.935+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:04:01.941+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:04:01.942+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T14:04:01.953+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T14:04:01.957+0000] {standard_task_runner.py:72} INFO - Started process 206 to run task
+[2025-02-02T14:04:01.959+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpjm9e9jtg']
+[2025-02-02T14:04:01.962+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T14:04:01.997+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 5ab92388ff22
+[2025-02-02T14:04:02.057+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T14:04:02.058+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T14:04:02.075+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T14:04:02.076+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T14:04:02.314+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:04:02.315+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T14:04:02.316+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:04:02.420+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T14:04:02.421+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T14:04:02.423+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T14:04:02.447+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:04:02.451+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:04:02.455+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:04:02.825+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:04:02.828+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T14:04:02.836+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T14:04:02.837+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T140401, end_date=20250202T140402
+[2025-02-02T14:04:02.896+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T14:04:02.911+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T14:04:02.913+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T14:25:07.103+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T14:25:07.116+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:25:07.122+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:25:07.122+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T14:25:07.132+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T14:25:07.136+0000] {standard_task_runner.py:72} INFO - Started process 208 to run task
+[2025-02-02T14:25:07.138+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp4xr3utkq']
+[2025-02-02T14:25:07.141+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T14:25:07.174+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 26561cd8ae45
+[2025-02-02T14:25:07.228+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T14:25:07.229+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T14:25:07.245+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T14:25:07.246+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T14:25:07.461+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:25:07.462+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T14:25:07.463+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:25:07.567+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T14:25:07.568+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T14:25:07.571+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T14:25:07.595+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:25:07.618+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:25:07.621+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:25:07.985+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:25:07.989+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T14:25:07.997+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T14:25:07.998+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T142507, end_date=20250202T142507
+[2025-02-02T14:25:08.034+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T14:25:08.049+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T14:25:08.051+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T14:29:55.535+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T14:29:55.549+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:29:55.556+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:29:55.556+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T14:29:55.566+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T14:29:55.571+0000] {standard_task_runner.py:72} INFO - Started process 211 to run task
+[2025-02-02T14:29:55.573+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpxh63ds8o']
+[2025-02-02T14:29:55.576+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T14:29:55.612+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host a499fcfb67cb
+[2025-02-02T14:29:55.669+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T14:29:55.670+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T14:29:55.687+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T14:29:55.688+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T14:29:55.922+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:29:55.923+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T14:29:55.924+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:29:56.028+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T14:29:56.029+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T14:29:56.031+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T14:29:56.049+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:29:56.060+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:29:56.063+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:29:56.662+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:29:56.666+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T14:29:56.675+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T14:29:56.676+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T142955, end_date=20250202T142956
+[2025-02-02T14:29:56.711+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T14:29:56.728+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T14:29:56.730+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T14:34:52.265+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T14:34:52.279+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:34:52.286+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:34:52.287+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T14:34:52.298+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T14:34:52.303+0000] {standard_task_runner.py:72} INFO - Started process 211 to run task
+[2025-02-02T14:34:52.305+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpnjsx827a']
+[2025-02-02T14:34:52.307+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T14:34:52.345+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host be62f1cf8682
+[2025-02-02T14:34:52.412+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T14:34:52.414+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T14:34:52.436+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T14:34:52.437+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T14:34:52.688+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:34:52.689+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T14:34:52.691+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:34:52.797+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T14:34:52.798+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T14:34:52.800+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T14:34:52.824+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:34:52.829+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:34:52.832+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:34:53.216+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:34:53.220+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T14:34:53.228+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T14:34:53.229+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T143452, end_date=20250202T143453
+[2025-02-02T14:34:53.281+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T14:34:53.297+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T14:34:53.299+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T14:46:11.771+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T14:46:11.784+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:46:11.790+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:46:11.791+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T14:46:11.801+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T14:46:11.805+0000] {standard_task_runner.py:72} INFO - Started process 218 to run task
+[2025-02-02T14:46:11.808+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpn9xtnz7e']
+[2025-02-02T14:46:11.810+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T14:46:11.845+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 63894a7c3fe6
+[2025-02-02T14:46:11.903+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T14:46:11.904+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T14:46:11.921+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T14:46:11.923+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T14:46:12.150+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:46:12.151+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T14:46:12.153+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:46:12.257+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T14:46:12.258+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T14:46:12.261+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T14:46:12.278+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:46:12.284+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:46:12.288+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:46:12.609+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:46:12.612+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T14:46:12.619+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T14:46:12.620+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T144611, end_date=20250202T144612
+[2025-02-02T14:46:12.664+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T14:46:12.676+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T14:46:12.678+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T14:58:28.285+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T14:58:28.299+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:58:28.306+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T14:58:28.306+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T14:58:28.315+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T14:58:28.320+0000] {standard_task_runner.py:72} INFO - Started process 207 to run task
+[2025-02-02T14:58:28.322+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmphp08cvo1']
+[2025-02-02T14:58:28.324+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T14:58:28.363+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host a75ab04d6f73
+[2025-02-02T14:58:28.430+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T14:58:28.431+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T14:58:28.452+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T14:58:28.453+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T14:58:28.673+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:58:28.674+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T14:58:28.675+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:58:28.779+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T14:58:28.780+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T14:58:28.783+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T14:58:28.820+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T14:58:28.822+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T14:58:28.826+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:58:29.162+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T14:58:29.165+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T14:58:29.173+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T14:58:29.174+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T145828, end_date=20250202T145829
+[2025-02-02T14:58:29.218+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T14:58:29.234+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T14:58:29.236+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T15:17:39.261+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T15:17:39.273+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T15:17:39.279+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T15:17:39.280+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T15:17:39.287+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T15:17:39.291+0000] {standard_task_runner.py:72} INFO - Started process 201 to run task
+[2025-02-02T15:17:39.293+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmps_ejn407']
+[2025-02-02T15:17:39.295+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T15:17:39.331+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host d42d69d5511c
+[2025-02-02T15:17:39.385+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T15:17:39.386+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T15:17:39.401+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T15:17:39.403+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T15:17:39.613+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T15:17:39.614+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T15:17:39.615+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T15:17:39.719+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T15:17:39.720+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T15:17:39.722+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T15:17:39.738+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T15:17:39.746+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T15:17:39.751+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T15:17:40.071+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T15:17:40.074+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T15:17:40.081+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T15:17:40.082+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T151739, end_date=20250202T151740
+[2025-02-02T15:17:40.108+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T15:17:40.120+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T15:17:40.122+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T15:51:45.319+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T15:51:45.332+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T15:51:45.338+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T15:51:45.339+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T15:51:45.348+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T15:51:45.352+0000] {standard_task_runner.py:72} INFO - Started process 206 to run task
+[2025-02-02T15:51:45.354+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpjqq9eliw']
+[2025-02-02T15:51:45.356+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T15:51:45.389+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 7bf4a44673c6
+[2025-02-02T15:51:45.443+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T15:51:45.445+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T15:51:45.460+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T15:51:45.461+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T15:51:45.710+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T15:51:45.712+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T15:51:45.713+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T15:51:45.818+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T15:51:45.819+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T15:51:45.821+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T15:51:45.836+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T15:51:45.841+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T15:51:45.845+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T15:51:46.199+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T15:51:46.202+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T15:51:46.209+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T15:51:46.210+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T155145, end_date=20250202T155146
+[2025-02-02T15:51:46.250+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T15:51:46.266+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T15:51:46.268+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T16:03:36.607+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T16:03:36.621+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T16:03:36.627+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T16:03:36.628+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T16:03:36.640+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T16:03:36.645+0000] {standard_task_runner.py:72} INFO - Started process 217 to run task
+[2025-02-02T16:03:36.648+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpot9knhys']
+[2025-02-02T16:03:36.650+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T16:03:36.689+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 4061bda98b6f
+[2025-02-02T16:03:36.746+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T16:03:36.748+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T16:03:36.764+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T16:03:36.765+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T16:03:36.987+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T16:03:36.988+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T16:03:36.989+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T16:03:37.093+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T16:03:37.094+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T16:03:37.097+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T16:03:37.112+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T16:03:37.119+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T16:03:37.122+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T16:03:37.477+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T16:03:37.480+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T16:03:37.488+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T16:03:37.489+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T160336, end_date=20250202T160337
+[2025-02-02T16:03:37.544+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T16:03:37.561+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T16:03:37.563+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T17:16:46.191+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T17:16:46.204+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T17:16:46.210+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T17:16:46.211+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T17:16:46.220+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T17:16:46.224+0000] {standard_task_runner.py:72} INFO - Started process 206 to run task
+[2025-02-02T17:16:46.226+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp_zn1uo8b']
+[2025-02-02T17:16:46.228+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T17:16:46.262+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 17d6b2523ddc
+[2025-02-02T17:16:46.316+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T17:16:46.317+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T17:16:46.333+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T17:16:46.334+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T17:16:46.558+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T17:16:46.559+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T17:16:46.560+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T17:16:46.671+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T17:16:46.672+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T17:16:46.674+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T17:16:46.712+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T17:16:46.716+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T17:16:46.720+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T17:16:47.042+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T17:16:47.044+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T17:16:47.052+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T17:16:47.052+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T171646, end_date=20250202T171647
+[2025-02-02T17:16:47.082+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T17:16:47.097+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T17:16:47.099+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T17:25:23.688+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T17:25:23.702+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T17:25:23.708+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T17:25:23.709+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T17:25:23.718+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T17:25:23.722+0000] {standard_task_runner.py:72} INFO - Started process 207 to run task
+[2025-02-02T17:25:23.724+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmprwbpius7']
+[2025-02-02T17:25:23.726+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T17:25:23.761+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 282dd463bdb8
+[2025-02-02T17:25:23.823+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T17:25:23.825+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T17:25:23.844+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T17:25:23.846+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T17:25:24.140+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T17:25:24.142+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T17:25:24.143+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T17:25:24.259+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T17:25:24.261+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T17:25:24.265+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T17:25:24.281+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T17:25:24.286+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T17:25:24.289+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T17:25:24.621+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T17:25:24.624+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T17:25:24.631+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T17:25:24.632+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T172523, end_date=20250202T172524
+[2025-02-02T17:25:24.660+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T17:25:24.674+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T17:25:24.676+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T18:21:32.823+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T18:21:32.837+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T18:21:32.846+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T18:21:32.846+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T18:21:32.856+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T18:21:32.860+0000] {standard_task_runner.py:72} INFO - Started process 222 to run task
+[2025-02-02T18:21:32.862+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpkpeukl42']
+[2025-02-02T18:21:32.864+0000] {standard_task_runner.py:105} INFO - Job 6: Subtask kafka_producer
+[2025-02-02T18:21:32.898+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 15904aeddad7
+[2025-02-02T18:21:32.956+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T18:21:32.957+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T18:21:32.973+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T18:21:32.974+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T18:21:33.194+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T18:21:33.195+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T18:21:33.196+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T18:21:33.309+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T18:21:33.310+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T18:21:33.313+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T18:21:33.329+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T18:21:33.334+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T18:21:33.338+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T18:21:33.666+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T18:21:33.669+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T18:21:33.676+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T18:21:33.677+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T182132, end_date=20250202T182133
+[2025-02-02T18:21:33.717+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T18:21:33.733+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T18:21:33.735+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T19:19:54.648+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T19:19:54.662+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T19:19:54.668+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T19:19:54.669+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T19:19:54.679+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T19:19:54.683+0000] {standard_task_runner.py:72} INFO - Started process 206 to run task
+[2025-02-02T19:19:54.685+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp1adxepp2']
+[2025-02-02T19:19:54.688+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T19:19:54.722+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host dfbcbb9a3a68
+[2025-02-02T19:19:54.777+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T19:19:54.778+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T19:19:54.794+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T19:19:54.796+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T19:19:55.023+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T19:19:55.024+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T19:19:55.025+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T19:19:55.139+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T19:19:55.140+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T19:19:55.142+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T19:19:55.155+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T19:19:55.169+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T19:19:55.173+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T19:19:55.501+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T19:19:55.504+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T19:19:55.511+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T19:19:55.512+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T191954, end_date=20250202T191955
+[2025-02-02T19:19:55.541+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T19:19:55.557+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T19:19:55.558+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T19:52:59.683+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T19:52:59.696+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T19:52:59.704+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T19:52:59.705+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T19:52:59.714+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T19:52:59.718+0000] {standard_task_runner.py:72} INFO - Started process 206 to run task
+[2025-02-02T19:52:59.721+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp5p3l97hw']
+[2025-02-02T19:52:59.723+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T19:52:59.758+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host cc19208c71dd
+[2025-02-02T19:52:59.813+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T19:52:59.814+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T19:52:59.831+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T19:52:59.832+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T19:53:00.069+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T19:53:00.070+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T19:53:00.071+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T19:53:00.175+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T19:53:00.176+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T19:53:00.179+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T19:53:00.193+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T19:53:00.204+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T19:53:00.207+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T19:53:00.540+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T19:53:00.542+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T19:53:00.550+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T19:53:00.551+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T195259, end_date=20250202T195300
+[2025-02-02T19:53:00.577+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T19:53:00.592+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T19:53:00.594+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T19:55:55.967+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T19:55:55.980+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T19:55:55.986+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T19:55:55.987+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T19:55:55.998+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T19:55:56.003+0000] {standard_task_runner.py:72} INFO - Started process 206 to run task
+[2025-02-02T19:55:56.005+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpj8_tldd9']
+[2025-02-02T19:55:56.008+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask kafka_producer
+[2025-02-02T19:55:56.049+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host ad5c63f64f40
+[2025-02-02T19:55:56.108+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T19:55:56.111+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T19:55:56.135+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T19:55:56.136+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T19:55:56.379+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T19:55:56.380+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T19:55:56.381+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T19:55:56.486+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T19:55:56.488+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T19:55:56.490+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T19:55:56.511+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T19:55:56.513+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T19:55:56.517+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T19:55:56.923+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T19:55:56.926+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T19:55:56.933+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T19:55:56.934+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T195555, end_date=20250202T195556
+[2025-02-02T19:55:56.981+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T19:55:56.998+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T19:55:57.001+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T20:07:32.195+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:07:32.209+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:07:32.216+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:07:32.217+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:07:32.229+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T20:07:32.233+0000] {standard_task_runner.py:72} INFO - Started process 202 to run task
+[2025-02-02T20:07:32.236+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpfosu5pt1']
+[2025-02-02T20:07:32.238+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask kafka_producer
+[2025-02-02T20:07:32.273+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 6df1dc328a9b
+[2025-02-02T20:07:32.335+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T20:07:32.336+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:07:32.353+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T20:07:32.354+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T20:07:32.646+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T20:07:32.647+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T20:07:32.648+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T20:07:32.753+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T20:07:32.757+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T20:07:32.760+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T20:07:32.783+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T20:07:32.788+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T20:07:32.792+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T20:07:33.187+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T20:07:33.190+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T20:07:33.197+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:07:33.199+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T200732, end_date=20250202T200733
+[2025-02-02T20:07:33.251+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T20:07:33.264+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:07:33.266+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T20:15:32.331+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:15:32.344+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:15:32.351+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:15:32.352+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:15:32.363+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T20:15:32.367+0000] {standard_task_runner.py:72} INFO - Started process 207 to run task
+[2025-02-02T20:15:32.370+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpcfg_1191']
+[2025-02-02T20:15:32.372+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask kafka_producer
+[2025-02-02T20:15:32.409+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host b0b992709001
+[2025-02-02T20:15:32.467+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T20:15:32.468+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:15:42.483+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T20:15:42.484+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T20:15:42.729+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T20:15:42.730+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T20:15:42.731+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T20:15:42.835+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T20:15:42.836+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T20:15:42.839+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T20:15:42.853+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T20:15:42.863+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T20:15:42.866+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T20:15:43.246+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T20:15:43.249+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T20:15:43.258+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:15:43.259+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T201532, end_date=20250202T201543
+[2025-02-02T20:15:43.318+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T20:15:43.333+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:15:43.335+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T20:40:40.754+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:40:40.765+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:40:40.771+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:40:40.771+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:40:40.779+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T20:40:40.783+0000] {standard_task_runner.py:72} INFO - Started process 289 to run task
+[2025-02-02T20:40:40.785+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpppnw1pfk']
+[2025-02-02T20:40:40.788+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask kafka_producer
+[2025-02-02T20:40:40.818+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 7ed9c07bce51
+[2025-02-02T20:40:40.873+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T20:40:40.874+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:40:40.891+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T20:40:40.892+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T20:40:41.118+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T20:40:41.119+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T20:40:41.121+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T20:40:41.224+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T20:40:41.226+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T20:40:41.230+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T20:40:41.243+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T20:40:41.256+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T20:40:41.260+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T20:40:41.607+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T20:40:41.610+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T20:40:41.618+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:40:41.619+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T204040, end_date=20250202T204041
+[2025-02-02T20:40:41.640+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T20:40:41.652+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:40:41.654+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-02T20:45:15.872+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-02T20:45:15.887+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:45:15.894+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-02T20:45:15.895+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-02T20:45:15.907+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): kafka_producer> on 2025-01-27 00:00:00+00:00
+[2025-02-02T20:45:15.913+0000] {standard_task_runner.py:72} INFO - Started process 504 to run task
+[2025-02-02T20:45:15.915+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'kafka_producer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpb32lj1kj']
+[2025-02-02T20:45:15.918+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask kafka_producer
+[2025-02-02T20:45:15.961+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.kafka_producer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 12998e952c77
+[2025-02-02T20:45:16.024+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='kafka_producer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-02T20:45:16.025+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-02T20:45:16.043+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-02T20:45:16.044+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-02T20:45:16.282+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T20:45:16.283+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2025-02-02T20:45:16.285+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T20:45:16.390+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2025-02-02T20:45:16.392+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2025-02-02T20:45:16.395+0000] {logging_mixin.py:190} INFO - Found 2025-01-27.json in MinIO
+[2025-02-02T20:45:16.412+0000] {conn.py:380} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: connecting to kafka:9093 [('172.18.0.5', 9093) IPv4]
+[2025-02-02T20:45:16.419+0000] {conn.py:410} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connecting> [IPv4 ('172.18.0.5', 9093)]>: Connection complete.
+[2025-02-02T20:45:16.423+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T20:45:16.892+0000] {conn.py:919} INFO - <BrokerConnection node_id=1001 host=kafka:9093 <connected> [IPv4 ('172.18.0.5', 9093)]>: Closing connection. 
+[2025-02-02T20:45:16.895+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-02T20:45:16.918+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-02T20:45:16.920+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=kafka_producer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250202T204515, end_date=20250202T204516
+[2025-02-02T20:45:16.972+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-02T20:45:16.990+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-02T20:45:16.995+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

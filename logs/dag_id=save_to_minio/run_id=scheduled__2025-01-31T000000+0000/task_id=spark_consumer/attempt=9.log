@@ -1,0 +1,219 @@
+[2025-02-01T22:31:35.824+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-01T22:31:35.840+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [queued]>
+[2025-02-01T22:31:35.849+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [queued]>
+[2025-02-01T22:31:35.851+0000] {taskinstance.py:2866} INFO - Starting attempt 9 of 12
+[2025-02-01T22:31:35.866+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): spark_consumer> on 2025-01-31 00:00:00+00:00
+[2025-02-01T22:31:35.873+0000] {standard_task_runner.py:72} INFO - Started process 2795 to run task
+[2025-02-01T22:31:35.876+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'spark_consumer', 'scheduled__2025-01-31T00:00:00+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpg52pckig']
+[2025-02-01T22:31:35.880+0000] {standard_task_runner.py:105} INFO - Job 13: Subtask spark_consumer
+[2025-02-01T22:31:35.951+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.spark_consumer scheduled__2025-01-31T00:00:00+00:00 [running]> on host aa1cd894ce8b
+[2025-02-01T22:31:36.027+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='9' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-31T00:00:00+00:00'
+[2025-02-01T22:31:36.028+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-01T22:31:42.067+0000] {java_gateway.py:2273} INFO - Callback Server Starting
+[2025-02-01T22:31:42.069+0000] {java_gateway.py:2275} INFO - Socket listening on ('127.0.0.1', 43983)
+[2025-02-01T22:31:44.296+0000] {clientserver.py:561} INFO - Python Server ready to receive messages
+[2025-02-01T22:31:44.297+0000] {clientserver.py:575} INFO - Received command c on object id p0
+[2025-02-01T22:31:44.432+0000] {clientserver.py:621} ERROR - There was an exception while executing the Python Proxy on the Python Side.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 120, in call
+    raise e
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 117, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+  File "/opt/airflow/dags/main_pipeline.py", line 138, in write_batch
+    rows = batch_df.select(columns).collect()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `price_change` cannot be resolved. Did you mean one of the following? [`priceChange`, `count`, `trend`, `bidPrice`, `bidQty`].;
+'Project [symbol#27, 'price_change, 'price_change_percent, 'weighted_avg_price, 'prev_close_price, 'last_price, 'last_qty, 'bid_price, 'bid_qty, 'ask_price, 'ask_qty, 'open_price, 'high_price, 'low_price, volume#41, 'quote_volume, 'close_time, 'first_id, 'last_id, count#47L, trend#69]
++- LogicalRDD [symbol#27, priceChange#28, priceChangePercent#29, weightedAvgPrice#30, prevClosePrice#31, lastPrice#32, lastQty#33, bidPrice#34, bidQty#35, askPrice#36, askQty#37, openPrice#38, highPrice#39, lowPrice#40, volume#41, quoteVolume#42, closeTime#113, firstId#45L, lastId#46L, count#47L, trend#69], false
+
+[2025-02-01T22:31:44.549+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 121, in spark_consumer
+    write_to_postgres(df_parsed)
+  File "/opt/airflow/dags/main_pipeline.py", line 157, in write_to_postgres
+    .awaitTermination()
+     ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/streaming/query.py", line 221, in awaitTermination
+    return self._jsq.awaitTermination()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.StreamingQueryException: [STREAM_FAILED] Query [id = 09f27480-5bef-4232-90a1-42379c620d6a, runId = f8a95276-1d30-477d-b77c-ef7938b80771] terminated with exception: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 120, in call
+    raise e
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 117, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+  File "/opt/airflow/dags/main_pipeline.py", line 138, in write_batch
+    rows = batch_df.select(columns).collect()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `price_change` cannot be resolved. Did you mean one of the following? [`priceChange`, `count`, `trend`, `bidPrice`, `bidQty`].;
+'Project [symbol#27, 'price_change, 'price_change_percent, 'weighted_avg_price, 'prev_close_price, 'last_price, 'last_qty, 'bid_price, 'bid_qty, 'ask_price, 'ask_qty, 'open_price, 'high_price, 'low_price, volume#41, 'quote_volume, 'close_time, 'first_id, 'last_id, count#47L, trend#69]
++- LogicalRDD [symbol#27, priceChange#28, priceChangePercent#29, weightedAvgPrice#30, prevClosePrice#31, lastPrice#32, lastQty#33, bidPrice#34, bidQty#35, askPrice#36, askQty#37, openPrice#38, highPrice#39, lowPrice#40, volume#41, quoteVolume#42, closeTime#113, firstId#45L, lastId#46L, count#47L, trend#69], false
+
+
+[2025-02-01T22:31:44.567+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=save_to_minio, task_id=spark_consumer, run_id=scheduled__2025-01-31T00:00:00+00:00, execution_date=20250131T000000, start_date=20250201T223135, end_date=20250201T223144
+[2025-02-01T22:31:44.582+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-01T22:31:44.583+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 13 for task spark_consumer ([STREAM_FAILED] Query [id = 09f27480-5bef-4232-90a1-42379c620d6a, runId = f8a95276-1d30-477d-b77c-ef7938b80771] terminated with exception: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 120, in call
+    raise e
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 117, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+  File "/opt/airflow/dags/main_pipeline.py", line 138, in write_batch
+    rows = batch_df.select(columns).collect()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `price_change` cannot be resolved. Did you mean one of the following? [`priceChange`, `count`, `trend`, `bidPrice`, `bidQty`].;
+'Project [symbol#27, 'price_change, 'price_change_percent, 'weighted_avg_price, 'prev_close_price, 'last_price, 'last_qty, 'bid_price, 'bid_qty, 'ask_price, 'ask_qty, 'open_price, 'high_price, 'low_price, volume#41, 'quote_volume, 'close_time, 'first_id, 'last_id, count#47L, trend#69]
++- LogicalRDD [symbol#27, priceChange#28, priceChangePercent#29, weightedAvgPrice#30, prevClosePrice#31, lastPrice#32, lastQty#33, bidPrice#34, bidQty#35, askPrice#36, askQty#37, openPrice#38, highPrice#39, lowPrice#40, volume#41, quoteVolume#42, closeTime#113, firstId#45L, lastId#46L, count#47L, trend#69], false
+
+; 2795)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/main_pipeline.py", line 121, in spark_consumer
+    write_to_postgres(df_parsed)
+  File "/opt/airflow/dags/main_pipeline.py", line 157, in write_to_postgres
+    .awaitTermination()
+     ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/streaming/query.py", line 221, in awaitTermination
+    return self._jsq.awaitTermination()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.StreamingQueryException: [STREAM_FAILED] Query [id = 09f27480-5bef-4232-90a1-42379c620d6a, runId = f8a95276-1d30-477d-b77c-ef7938b80771] terminated with exception: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 120, in call
+    raise e
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/utils.py", line 117, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+  File "/opt/airflow/dags/main_pipeline.py", line 138, in write_batch
+    rows = batch_df.select(columns).collect()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/sql/dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `price_change` cannot be resolved. Did you mean one of the following? [`priceChange`, `count`, `trend`, `bidPrice`, `bidQty`].;
+'Project [symbol#27, 'price_change, 'price_change_percent, 'weighted_avg_price, 'prev_close_price, 'last_price, 'last_qty, 'bid_price, 'bid_qty, 'ask_price, 'ask_qty, 'open_price, 'high_price, 'low_price, volume#41, 'quote_volume, 'close_time, 'first_id, 'last_id, count#47L, trend#69]
++- LogicalRDD [symbol#27, priceChange#28, priceChangePercent#29, weightedAvgPrice#30, prevClosePrice#31, lastPrice#32, lastQty#33, bidPrice#34, bidQty#35, askPrice#36, askQty#37, openPrice#38, highPrice#39, lowPrice#40, volume#41, quoteVolume#42, closeTime#113, firstId#45L, lastId#46L, count#47L, trend#69], false
+
+
+[2025-02-01T22:31:44.627+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-02-01T22:31:44.644+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-01T22:31:44.646+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
