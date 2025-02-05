@@ -25,6 +25,12 @@ minio_conn = Connection(
     }
 )
 
+spark_conn = Connection(
+    conn_id="spark_default",
+    conn_type="spark",
+    host="yarn",  # Initial host value (will change to local[*])
+)
+
 session = settings.Session()
 
 existing_postgres_localhost = session.query(Connection).filter(Connection.conn_id == "postgres_localhost").first()
@@ -43,5 +49,17 @@ if not existing_minio_conn:
     print("Connection to MinIO successfully created!")
 else:
     print("Connection to MinIO already exists!.")
+
+
+# Handling Spark connection (changing host to local[*])
+existing_spark_conn = session.query(Connection).filter(Connection.conn_id == "spark_default").first()
+if existing_spark_conn:
+    existing_spark_conn.host = "local[*]"  # Changing host to local[*]
+    session.commit()
+    print("Spark connection host updated to 'local[*]'!")
+else:
+    session.add(spark_conn)
+    session.commit()
+    print("Spark connection to local[*] successfully created!")
 
 session.close()

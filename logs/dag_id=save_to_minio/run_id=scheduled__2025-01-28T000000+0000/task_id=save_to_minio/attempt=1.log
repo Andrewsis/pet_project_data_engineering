@@ -762,3 +762,22 @@ botocore.errorfactory.NoSuchBucket: An error occurred (NoSuchBucket) when callin
 [2025-02-02T20:45:22.633+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
 [2025-02-02T20:45:22.649+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
 [2025-02-02T20:45:22.653+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-02-04T20:16:05.194+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-04T20:16:05.207+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-02-04T20:16:05.216+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-28T00:00:00+00:00 [queued]>
+[2025-02-04T20:16:05.217+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 6
+[2025-02-04T20:16:05.228+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): save_to_minio> on 2025-01-28 00:00:00+00:00
+[2025-02-04T20:16:05.233+0000] {standard_task_runner.py:72} INFO - Started process 1722 to run task
+[2025-02-04T20:16:05.236+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'save_to_minio', 'save_to_minio', 'scheduled__2025-01-28T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp4x3fsloh']
+[2025-02-04T20:16:05.239+0000] {standard_task_runner.py:105} INFO - Job 9: Subtask save_to_minio
+[2025-02-04T20:16:05.281+0000] {task_command.py:467} INFO - Running <TaskInstance: save_to_minio.save_to_minio scheduled__2025-01-28T00:00:00+00:00 [running]> on host 7ffbfde90b16
+[2025-02-04T20:16:05.353+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='save_to_minio' AIRFLOW_CTX_TASK_ID='save_to_minio' AIRFLOW_CTX_EXECUTION_DATE='2025-01-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-28T00:00:00+00:00'
+[2025-02-04T20:16:05.355+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-04T20:16:07.793+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-02-04T20:16:07.795+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-02-04T20:16:08.230+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-04T20:16:08.242+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-04T20:16:08.243+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=save_to_minio, task_id=save_to_minio, run_id=scheduled__2025-01-28T00:00:00+00:00, execution_date=20250128T000000, start_date=20250204T201605, end_date=20250204T201608
+[2025-02-04T20:16:08.300+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-04T20:16:08.325+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-04T20:16:08.327+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

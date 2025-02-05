@@ -1,0 +1,83 @@
+[2025-02-04T20:08:33.250+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-04T20:08:33.264+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-04T20:08:33.272+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [queued]>
+[2025-02-04T20:08:33.273+0000] {taskinstance.py:2866} INFO - Starting attempt 5 of 10
+[2025-02-04T20:08:33.283+0000] {taskinstance.py:2889} INFO - Executing <Task(SparkSubmitOperator): spark_consumer> on 2025-01-27 00:00:00+00:00
+[2025-02-04T20:08:33.288+0000] {standard_task_runner.py:72} INFO - Started process 1079 to run task
+[2025-02-04T20:08:33.290+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'spark_consumer_dag', 'spark_consumer', 'scheduled__2025-01-27T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/consumer.py', '--cfg-path', '/tmp/tmpnfy6m1a3']
+[2025-02-04T20:08:33.293+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask spark_consumer
+[2025-02-04T20:08:33.332+0000] {task_command.py:467} INFO - Running <TaskInstance: spark_consumer_dag.spark_consumer scheduled__2025-01-27T00:00:00+00:00 [running]> on host 7ffbfde90b16
+[2025-02-04T20:08:33.408+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='andrewsis' AIRFLOW_CTX_DAG_ID='spark_consumer_dag' AIRFLOW_CTX_TASK_ID='spark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2025-01-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='5' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-27T00:00:00+00:00'
+[2025-02-04T20:08:33.409+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-04T20:08:33.435+0000] {base.py:84} INFO - Retrieving connection 'spark_default'
+[2025-02-04T20:08:33.436+0000] {spark_submit.py:474} INFO - Spark-Submit cmd: spark-submit --master local[*] --conf spark.jars.packages=org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.4 --conf spark.jars=/opt/postgresql-42.2.23.jar --num-executors 1 --executor-cores 1 --executor-memory 1g --driver-memory 512m --name arrow-spark --queue root.default --deploy-mode client /opt/***/dags/spark_consumer.py --kafka-bootstrap-servers kafka:9093 --topic crypto_topic --jdbc-url jdbc:postgresql://postgres:5432/test --user *** --password ******
+[2025-02-04T20:08:33.505+0000] {spark_submit.py:641} INFO - /home/***/.local/lib/python3.11/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2025-02-04T20:08:35.157+0000] {spark_submit.py:641} INFO - :: loading settings :: url = jar:file:/home/***/.local/lib/python3.11/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2025-02-04T20:08:35.245+0000] {spark_submit.py:641} INFO - Ivy Default Cache set to: /home/***/.ivy2/cache
+[2025-02-04T20:08:35.246+0000] {spark_submit.py:641} INFO - The jars for the packages stored in: /home/***/.ivy2/jars
+[2025-02-04T20:08:35.252+0000] {spark_submit.py:641} INFO - org.apache.spark#spark-sql-kafka-0-10_2.12 added as a dependency
+[2025-02-04T20:08:35.254+0000] {spark_submit.py:641} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-6d6a0aab-f822-4e10-bf6c-a7ac9d6bb18e;1.0
+[2025-02-04T20:08:35.255+0000] {spark_submit.py:641} INFO - confs: [default]
+[2025-02-04T20:08:36.837+0000] {spark_submit.py:641} INFO - found org.apache.spark#spark-sql-kafka-0-10_2.12;3.5.4 in central
+[2025-02-04T20:08:37.032+0000] {spark_submit.py:641} INFO - found org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.5.4 in central
+[2025-02-04T20:08:37.083+0000] {spark_submit.py:641} INFO - found org.apache.kafka#kafka-clients;3.4.1 in central
+[2025-02-04T20:08:37.149+0000] {spark_submit.py:641} INFO - found org.lz4#lz4-java;1.8.0 in central
+[2025-02-04T20:08:37.196+0000] {spark_submit.py:641} INFO - found org.xerial.snappy#snappy-java;1.1.10.5 in central
+[2025-02-04T20:08:37.357+0000] {spark_submit.py:641} INFO - found org.slf4j#slf4j-api;2.0.7 in central
+[2025-02-04T20:08:38.585+0000] {spark_submit.py:641} INFO - found org.apache.hadoop#hadoop-client-runtime;3.3.4 in central
+[2025-02-04T20:08:38.694+0000] {spark_submit.py:641} INFO - found org.apache.hadoop#hadoop-client-api;3.3.4 in central
+[2025-02-04T20:08:38.926+0000] {spark_submit.py:641} INFO - found commons-logging#commons-logging;1.1.3 in central
+[2025-02-04T20:08:38.976+0000] {spark_submit.py:641} INFO - found com.google.code.findbugs#jsr305;3.0.0 in central
+[2025-02-04T20:08:39.335+0000] {spark_submit.py:641} INFO - found org.apache.commons#commons-pool2;2.11.1 in central
+[2025-02-04T20:08:39.362+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-0-10_2.12/3.5.4/spark-sql-kafka-0-10_2.12-3.5.4.jar ...
+[2025-02-04T20:08:39.564+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] org.apache.spark#spark-sql-kafka-0-10_2.12;3.5.4!spark-sql-kafka-0-10_2.12.jar (221ms)
+[2025-02-04T20:08:39.583+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-0-10_2.12/3.5.4/spark-token-provider-kafka-0-10_2.12-3.5.4.jar ...
+[2025-02-04T20:08:39.626+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.5.4!spark-token-provider-kafka-0-10_2.12.jar (62ms)
+[2025-02-04T20:08:39.647+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/3.4.1/kafka-clients-3.4.1.jar ...
+[2025-02-04T20:08:41.386+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] org.apache.kafka#kafka-clients;3.4.1!kafka-clients.jar (1760ms)
+[2025-02-04T20:08:41.412+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.0/jsr305-3.0.0.jar ...
+[2025-02-04T20:08:41.452+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] com.google.code.findbugs#jsr305;3.0.0!jsr305.jar (65ms)
+[2025-02-04T20:08:41.472+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.11.1/commons-pool2-2.11.1.jar ...
+[2025-02-04T20:08:41.514+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] org.apache.commons#commons-pool2;2.11.1!commons-pool2.jar (61ms)
+[2025-02-04T20:08:41.559+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-client-runtime/3.3.4/hadoop-client-runtime-3.3.4.jar ...
+[2025-02-04T20:08:46.090+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] org.apache.hadoop#hadoop-client-runtime;3.3.4!hadoop-client-runtime.jar (4574ms)
+[2025-02-04T20:08:46.111+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar ...
+[2025-02-04T20:08:46.218+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] org.lz4#lz4-java;1.8.0!lz4-java.jar (128ms)
+[2025-02-04T20:08:46.241+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/org/xerial/snappy/snappy-java/1.1.10.5/snappy-java-1.1.10.5.jar ...
+[2025-02-04T20:08:46.461+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] org.xerial.snappy#snappy-java;1.1.10.5!snappy-java.jar(bundle) (242ms)
+[2025-02-04T20:08:46.479+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/org/slf4j/slf4j-api/2.0.7/slf4j-api-2.0.7.jar ...
+[2025-02-04T20:08:46.580+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] org.slf4j#slf4j-api;2.0.7!slf4j-api.jar (119ms)
+[2025-02-04T20:08:46.606+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-client-api/3.3.4/hadoop-client-api-3.3.4.jar ...
+[2025-02-04T20:08:48.531+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] org.apache.hadoop#hadoop-client-api;3.3.4!hadoop-client-api.jar (1949ms)
+[2025-02-04T20:08:48.597+0000] {spark_submit.py:641} INFO - downloading https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar ...
+[2025-02-04T20:08:48.638+0000] {spark_submit.py:641} INFO - [SUCCESSFUL ] commons-logging#commons-logging;1.1.3!commons-logging.jar (107ms)
+[2025-02-04T20:08:48.640+0000] {spark_submit.py:641} INFO - :: resolution report :: resolve 4089ms :: artifacts dl 9297ms
+[2025-02-04T20:08:48.641+0000] {spark_submit.py:641} INFO - :: modules in use:
+[2025-02-04T20:08:48.642+0000] {spark_submit.py:641} INFO - com.google.code.findbugs#jsr305;3.0.0 from central in [default]
+[2025-02-04T20:08:48.643+0000] {spark_submit.py:641} INFO - commons-logging#commons-logging;1.1.3 from central in [default]
+[2025-02-04T20:08:48.643+0000] {spark_submit.py:641} INFO - org.apache.commons#commons-pool2;2.11.1 from central in [default]
+[2025-02-04T20:08:48.644+0000] {spark_submit.py:641} INFO - org.apache.hadoop#hadoop-client-api;3.3.4 from central in [default]
+[2025-02-04T20:08:48.645+0000] {spark_submit.py:641} INFO - org.apache.hadoop#hadoop-client-runtime;3.3.4 from central in [default]
+[2025-02-04T20:08:48.646+0000] {spark_submit.py:641} INFO - org.apache.kafka#kafka-clients;3.4.1 from central in [default]
+[2025-02-04T20:08:48.647+0000] {spark_submit.py:641} INFO - org.apache.spark#spark-sql-kafka-0-10_2.12;3.5.4 from central in [default]
+[2025-02-04T20:08:48.648+0000] {spark_submit.py:641} INFO - org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.5.4 from central in [default]
+[2025-02-04T20:08:48.648+0000] {spark_submit.py:641} INFO - org.lz4#lz4-java;1.8.0 from central in [default]
+[2025-02-04T20:08:48.649+0000] {spark_submit.py:641} INFO - org.slf4j#slf4j-api;2.0.7 from central in [default]
+[2025-02-04T20:08:48.650+0000] {spark_submit.py:641} INFO - org.xerial.snappy#snappy-java;1.1.10.5 from central in [default]
+[2025-02-04T20:08:48.651+0000] {spark_submit.py:641} INFO - ---------------------------------------------------------------------
+[2025-02-04T20:08:48.651+0000] {spark_submit.py:641} INFO - |                  |            modules            ||   artifacts   |
+[2025-02-04T20:08:48.652+0000] {spark_submit.py:641} INFO - |       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-02-04T20:08:48.653+0000] {spark_submit.py:641} INFO - ---------------------------------------------------------------------
+[2025-02-04T20:08:48.654+0000] {spark_submit.py:641} INFO - |      default     |   11  |   11  |   11  |   0   ||   11  |   11  |
+[2025-02-04T20:08:48.655+0000] {spark_submit.py:641} INFO - ---------------------------------------------------------------------
+[2025-02-04T20:08:48.655+0000] {spark_submit.py:641} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-6d6a0aab-f822-4e10-bf6c-a7ac9d6bb18e
+[2025-02-04T20:08:48.656+0000] {spark_submit.py:641} INFO - confs: [default]
+[2025-02-04T20:08:48.729+0000] {spark_submit.py:641} INFO - 11 artifacts copied, 0 already retrieved (57002kB/82ms)
+[2025-02-04T20:08:48.944+0000] {spark_submit.py:641} INFO - 25/02/04 20:08:48 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-02-04T20:08:50.044+0000] {spark_submit.py:641} INFO - 25/02/04 20:08:50 INFO ShutdownHookManager: Shutdown hook called
+[2025-02-04T20:08:50.045+0000] {spark_submit.py:641} INFO - 25/02/04 20:08:50 INFO ShutdownHookManager: Deleting directory /tmp/spark-0e5e9f41-5874-4183-bc4f-b7c63ed209e4
+[2025-02-04T20:08:50.085+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-04T20:08:50.086+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=spark_consumer_dag, task_id=spark_consumer, run_id=scheduled__2025-01-27T00:00:00+00:00, execution_date=20250127T000000, start_date=20250204T200833, end_date=20250204T200850
+[2025-02-04T20:08:50.128+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-04T20:08:50.143+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-04T20:08:50.145+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

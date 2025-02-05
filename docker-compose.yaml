@@ -150,6 +150,9 @@ services:
         chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
 
         python /sources/add_connection.py
+                
+        chmod +x /sources/create_buckets.sh
+        /sources/create_buckets.sh
 
         exec /entrypoint airflow version
 
@@ -166,6 +169,7 @@ services:
     user: "0:0"
     volumes:
       - ${AIRFLOW_PROJ_DIR:-.}:/sources
+      - /var/run/docker.sock:/var/run/docker.sock
 
   airflow-cli:
     <<: *airflow-common
@@ -196,7 +200,6 @@ services:
       - '9001:9001'
     volumes:
       - 'minio_data:/data'
-      - './create_buckets.sh:/create_buckets.sh'
     restart: always
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
@@ -204,7 +207,7 @@ services:
       retries: 5
       start_period: 10s
       timeout: 5s
-    entrypoint: ["/bin/sh", "-c", "chmod +x /create_buckets.sh && /create_buckets.sh && exec minio server /data --console-address :9001"]
+    entrypoint: ["/bin/sh", "-c", "exec minio server /data --console-address :9001"]
     networks:
       - airflow-network
 

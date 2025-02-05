@@ -1,0 +1,224 @@
+[2025-02-04T21:27:12.480+0000] {processor.py:186} INFO - Started process (PID=901) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:27:12.481+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:27:12.482+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:27:12.481+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:27:12.534+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:27:12.616+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:27:12.616+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:27:12.632+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:27:12.632+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:27:12.648+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.172 seconds
+[2025-02-04T21:27:42.733+0000] {processor.py:186} INFO - Started process (PID=917) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:27:42.734+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:27:42.735+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:27:42.735+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:27:42.780+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:27:42.797+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:27:42.797+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:27:42.814+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:27:42.814+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:27:42.832+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.103 seconds
+[2025-02-04T21:28:12.928+0000] {processor.py:186} INFO - Started process (PID=933) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:28:12.929+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:28:12.930+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:28:12.929+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:28:12.975+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:28:12.991+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:28:12.990+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:28:13.009+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:28:13.009+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:28:13.020+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.097 seconds
+[2025-02-04T21:28:43.240+0000] {processor.py:186} INFO - Started process (PID=949) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:28:43.241+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:28:43.242+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:28:43.242+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:28:43.286+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:28:43.302+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:28:43.302+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:28:43.319+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:28:43.319+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:28:43.336+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.100 seconds
+[2025-02-04T21:29:13.557+0000] {processor.py:186} INFO - Started process (PID=965) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:29:13.557+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:29:13.558+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:29:13.558+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:29:13.603+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:29:13.620+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:29:13.620+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:29:13.636+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:29:13.636+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:29:13.654+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.102 seconds
+[2025-02-04T21:29:43.769+0000] {processor.py:186} INFO - Started process (PID=981) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:29:43.769+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:29:43.770+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:29:43.770+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:29:43.818+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:29:43.835+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:29:43.834+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:29:43.853+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:29:43.853+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:29:43.866+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.102 seconds
+[2025-02-04T21:30:14.096+0000] {processor.py:186} INFO - Started process (PID=1003) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:30:14.097+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:30:14.098+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:30:14.097+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:30:14.148+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:30:14.165+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:30:14.165+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:30:14.182+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:30:14.181+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:30:14.195+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.103 seconds
+[2025-02-04T21:30:44.308+0000] {processor.py:186} INFO - Started process (PID=1019) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:30:44.309+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:30:44.310+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:30:44.310+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:30:44.357+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:30:44.373+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:30:44.373+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:30:44.390+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:30:44.390+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:30:44.410+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.106 seconds
+[2025-02-04T21:31:14.637+0000] {processor.py:186} INFO - Started process (PID=1035) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:31:14.638+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:31:14.639+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:31:14.639+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:31:14.685+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:31:14.701+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:31:14.701+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:31:14.719+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:31:14.719+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:31:14.732+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.098 seconds
+[2025-02-04T21:31:44.843+0000] {processor.py:186} INFO - Started process (PID=1051) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:31:44.844+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:31:44.845+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:31:44.845+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:31:44.897+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:31:44.916+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:31:44.916+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:31:44.939+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:31:44.938+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:31:44.954+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.117 seconds
+[2025-02-04T21:32:15.220+0000] {processor.py:186} INFO - Started process (PID=1067) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:32:15.221+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:32:15.222+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:32:15.222+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:32:15.268+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:32:15.286+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:32:15.286+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:32:15.304+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:32:15.303+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:32:15.323+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.107 seconds
+[2025-02-04T21:32:45.437+0000] {processor.py:186} INFO - Started process (PID=1083) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:32:45.437+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:32:45.438+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:32:45.438+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:32:45.485+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:32:45.502+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:32:45.501+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:32:45.519+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:32:45.519+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:32:45.535+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.103 seconds
+[2025-02-04T21:33:15.759+0000] {processor.py:186} INFO - Started process (PID=1099) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:33:15.760+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:33:15.761+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:33:15.761+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:33:15.807+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:33:15.824+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:33:15.824+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:33:15.842+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:33:15.841+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:33:15.861+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.106 seconds
+[2025-02-04T21:33:45.970+0000] {processor.py:186} INFO - Started process (PID=1115) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:33:45.971+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:33:45.972+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:33:45.972+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:33:46.018+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:33:46.034+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:33:46.033+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:33:46.052+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:33:46.052+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:33:46.071+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.105 seconds
+[2025-02-04T21:34:16.286+0000] {processor.py:186} INFO - Started process (PID=1131) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:34:16.286+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:34:16.287+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:34:16.287+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:34:16.331+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:34:16.347+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:34:16.347+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:34:16.366+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:34:16.365+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:34:16.378+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.096 seconds
+[2025-02-04T21:34:46.492+0000] {processor.py:186} INFO - Started process (PID=1147) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:34:46.492+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:34:46.493+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:34:46.493+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:34:46.541+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:34:46.559+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:34:46.559+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:34:46.577+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:34:46.577+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:34:46.590+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.103 seconds
+[2025-02-04T21:35:16.817+0000] {processor.py:186} INFO - Started process (PID=1163) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:35:16.818+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:35:16.819+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:35:16.818+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:35:16.864+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:35:16.880+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:35:16.880+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:35:16.897+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:35:16.897+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:35:16.910+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.097 seconds
+[2025-02-04T21:35:47.030+0000] {processor.py:186} INFO - Started process (PID=1179) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:35:47.031+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:35:47.032+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:35:47.032+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:35:47.078+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:35:47.101+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:35:47.101+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:35:47.118+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:35:47.117+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:35:47.136+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.111 seconds
+[2025-02-04T21:36:17.363+0000] {processor.py:186} INFO - Started process (PID=1195) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:36:17.364+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:36:17.365+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:36:17.364+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:36:17.422+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:36:17.441+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:36:17.440+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:36:17.458+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:36:17.458+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:36:17.476+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.118 seconds
+[2025-02-04T21:36:47.571+0000] {processor.py:186} INFO - Started process (PID=1211) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:36:47.572+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:36:47.573+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:36:47.572+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:36:47.619+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:36:47.671+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:36:47.670+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:36:47.710+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:36:47.710+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:36:47.728+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.162 seconds
+[2025-02-04T21:37:18.010+0000] {processor.py:186} INFO - Started process (PID=1227) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:37:18.011+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:37:18.011+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:37:18.011+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:37:18.060+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:37:18.078+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:37:18.077+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:37:18.094+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:37:18.094+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:37:18.111+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.105 seconds
+[2025-02-04T21:37:48.213+0000] {processor.py:186} INFO - Started process (PID=1243) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:37:48.214+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:37:48.215+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:37:48.214+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:37:48.260+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:37:48.278+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:37:48.278+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:37:48.294+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:37:48.294+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:37:48.313+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.105 seconds
+[2025-02-04T21:38:18.528+0000] {processor.py:186} INFO - Started process (PID=1259) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:38:18.529+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:38:18.530+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:38:18.530+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:38:18.574+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:38:18.590+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:38:18.590+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:38:18.609+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:38:18.609+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:38:18.627+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.103 seconds
+[2025-02-04T21:38:48.746+0000] {processor.py:186} INFO - Started process (PID=1275) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:38:48.747+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:38:48.748+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:38:48.747+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:38:48.792+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:38:48.807+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:38:48.807+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:38:48.823+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:38:48.823+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:38:48.840+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.098 seconds
+[2025-02-04T21:39:19.053+0000] {processor.py:186} INFO - Started process (PID=1292) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:39:19.054+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:39:19.055+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:39:19.055+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:39:19.100+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:39:19.117+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:39:19.116+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:39:19.135+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:39:19.135+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:39:19.147+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.098 seconds
+[2025-02-04T21:39:49.280+0000] {processor.py:186} INFO - Started process (PID=1308) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:39:49.281+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:39:49.282+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:39:49.282+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:39:49.331+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:39:49.348+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:39:49.348+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:39:49.367+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:39:49.367+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:39:49.381+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.106 seconds
+[2025-02-04T21:40:19.597+0000] {processor.py:186} INFO - Started process (PID=1324) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:40:19.598+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:40:19.599+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:40:19.599+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:40:19.644+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:40:19.662+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:40:19.662+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:40:19.679+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:40:19.679+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:40:19.691+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.098 seconds
+[2025-02-04T21:40:49.814+0000] {processor.py:186} INFO - Started process (PID=1340) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:40:49.815+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:40:49.817+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:40:49.816+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:40:49.863+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:40:49.879+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:40:49.879+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:40:49.895+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:40:49.895+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:40:49.908+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.099 seconds
+[2025-02-04T21:41:20.132+0000] {processor.py:186} INFO - Started process (PID=1356) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:41:20.133+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:41:20.134+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:41:20.133+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:41:20.188+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:41:20.208+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:41:20.208+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:41:20.228+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:41:20.228+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:41:20.240+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.113 seconds
+[2025-02-04T21:41:50.347+0000] {processor.py:186} INFO - Started process (PID=1372) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:41:50.348+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:41:50.349+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:41:50.349+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:41:50.395+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:41:50.412+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:41:50.412+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:41:50.428+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:41:50.428+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:41:50.443+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.100 seconds
+[2025-02-04T21:42:20.704+0000] {processor.py:186} INFO - Started process (PID=1388) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:42:20.704+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:42:20.705+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:42:20.705+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:42:20.751+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:42:20.767+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:42:20.767+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:42:20.785+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:42:20.785+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:42:20.798+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.099 seconds
+[2025-02-04T21:42:50.919+0000] {processor.py:186} INFO - Started process (PID=1404) to work on /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:42:50.919+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_producer.py for tasks to queue
+[2025-02-04T21:42:50.920+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:42:50.920+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:42:50.965+0000] {processor.py:925} INFO - DAG(s) 'save_to_minio' retrieved from /opt/airflow/dags/dag_producer.py
+[2025-02-04T21:42:50.981+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:42:50.981+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-04T21:42:50.997+0000] {logging_mixin.py:190} INFO - [2025-02-04T21:42:50.997+0000] {dag.py:4180} INFO - Setting next_dagrun for save_to_minio to 2025-01-27 00:00:00+00:00, run_after=2025-01-28 00:00:00+00:00
+[2025-02-04T21:42:51.014+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_producer.py took 0.100 seconds

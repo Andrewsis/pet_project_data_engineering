@@ -1,9 +1,21 @@
+import argparse
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col, when, from_unixtime
 from pyspark.sql.types import StructType, StructField, StringType, LongType, DecimalType
 import logging
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Spark Streaming Consumer for Crypto Prices")
+    parser.add_argument("--kafka-bootstrap-servers", required=True, help="Kafka bootstrap servers")
+    parser.add_argument("--topic", required=True, help="Kafka topic name")
+    parser.add_argument("--jdbc-url", required=True, help="PostgreSQL JDBC URL")
+    parser.add_argument("--user", required=True, help="PostgreSQL username")
+    parser.add_argument("--password", required=True, help="PostgreSQL password")
+    return parser.parse_args()
+
 def spark_consumer():
+    args = parse_args()
+
     spark = SparkSession.builder \
         .appName("CryptoDataProcessor") \
         .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.4") \
@@ -12,12 +24,10 @@ def spark_consumer():
 
     df = spark.readStream \
         .format("kafka") \
-        .option("kafka.bootstrap.servers", "kafka:9093") \
-        .option("subscribe", 'crypto_topic') \
+        .option("kafka.bootstrap.servers", args.kafka_bootstrap_servers) \
+        .option("subscribe", args.topic) \
         .option("startingOffsets", 'latest') \
         .load()
-
-    # df = df.selectExpr("CAST(value AS STRING)")
 
     schema = StructType([
         StructField("symbol", StringType(), False),
@@ -87,39 +97,30 @@ def spark_consumer():
     for old_col, new_col in column_mapping.items():
         df_parsed = df_parsed.withColumnRenamed(old_col, new_col)
 
-    if df_parsed.isStreaming:
-        logging.info("df_parsed является потоком")
-    else:
-        logging.info("df_parsed не является потоком")
-
-
     query = df_parsed.writeStream \
-        .foreachBatch(save_to_postgresql) \
+        .foreachBatch(lambda batch_df, batch_id: save_to_postgresql(batch_df, batch_id, args)) \
         .outputMode("append") \
         .start()
 
     query.awaitTermination()
 
-def save_to_postgresql(batch_df, batch_id):
+def save_to_postgresql(batch_df, batch_id, args):
     logging.basicConfig(level=logging.DEBUG)
 
-    jdbc_url = "jdbc:postgresql://postgres:5432/test"
-
+    jdbc_url = args.jdbc_url
     properties = {
-        "user": "airflow",
-        "password": "airflow",
+        "user": args.user,
+        "password": args.password,
         "driver": "org.postgresql.Driver"
     }
 
-    if batch_df.isEmpty():
-        logging.info(f"Batch {batch_id} пустой.")
-    else:
-        logging.info(f"Запись пакета {batch_id} с данными: {batch_df.head()} в PostgreSQL.")
-
     try:
         logging.info(f"Writing batch {batch_id} to PostgreSQL.")
-        logging.info(f"Writing batch with data: {batch_df.head()} to PostgreSQL.")
         batch_df.write.jdbc(url=jdbc_url, table="crypto_data", mode="append", properties=properties)
         logging.info(f"Batch {batch_id} successfully written to PostgreSQL.")
     except Exception as e:
         logging.error(f"Failed to write batch {batch_id} to PostgreSQL: {e}")
+
+
+if __name__ == "__main__":
+    spark_consumer()
