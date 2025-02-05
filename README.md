@@ -37,7 +37,7 @@ docker-compose up airflow-init
 ### 3️⃣ Starting dags
 Open apache airflow UI in http://localhost:8080
 
-1. Start ``spark_consumer_dag`` DAG and wait (30sec min) unit it will start. 
+1. Start ``spark_consumer_dag`` DAG and wait (30sec - 1min) unit it will start. 
 2. Then start ``save_to_minio`` DAG and it will save data from API to MinIO at first task.
 3. After that it will send to Kafka stream data from MinIO.
 4. Our ``spark_consumer_dag`` will automatically consume it and load to PostgreDB.
